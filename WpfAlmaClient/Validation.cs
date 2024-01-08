@@ -9,29 +9,6 @@ using System.Windows.Controls;
 
 namespace WpfAlmaClient
 {
-    class Validation
-    {
-    }
-    public class ValidBirthYear : ValidationRule
-    {
-        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
-        {
-            try
-            {
-                int year = int.Parse(value.ToString());
-                if (year < 1900)
-                    return new ValidationResult(false, "Too old");
-                if (year > DateTime.Today.Year)
-                    return new ValidationResult(false, "No way!");
-            }
-            catch (Exception ex)
-            {
-                return new ValidationResult(false, "Error: " + ex.Message);
-            }
-            return ValidationResult.ValidResult;
-        }
-    }
-
     public class ValidName : ValidationRule
     {
         public int min { get; set; }
@@ -65,24 +42,32 @@ namespace WpfAlmaClient
 
     public class ValidUserName : ValidationRule
     {
+        public int Min { get; set; }
+        public int Max { get; set; }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             try
             {
-                string username = value.ToString();
-                if (username.Length < 6) // username too short
-                    return new ValidationResult(false, "Too short");
-                if (username.Length > 15) // username too long
-                    return new ValidationResult(false, "Too long");
-                foreach (char c in username)
-                    if (!Char.IsLetterOrDigit(c) && c != '_')
-                        return new ValidationResult(false, "Only letters, numbers and underscore");
-                if (!Char.IsLetter(username[0]))
-                    return new ValidationResult(false, "Username must start with a letter");
+                string symbols = "#?$!-_~";
+                string text = value.ToString();
+                if (text.Length < Min)
+                    throw new Exception("UserName too short");
+                if (text.Length > Max)
+                    throw new Exception("UserName too long");
+                if (text.IndexOf(" ") != -1)
+                    throw new Exception("UserName can not include space");
+
+                for (int i = 0; i < text.Length; i++)
+                {
+                    if (!Char.IsLetter(text[i]) && !Char.IsDigit(text[i]) && symbols.IndexOf(text[i]) == -1)
+                    {
+                        throw new Exception($"What symbol did you find? only digit, letter and [{symbols}]");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                return new ValidationResult(false, "Error: " + ex.Message);
+                return new ValidationResult(false, ex.Message);
             }
             return ValidationResult.ValidResult;
         }
@@ -90,47 +75,77 @@ namespace WpfAlmaClient
 
     public class ValidPassword : ValidationRule
     {
+        public int Min { get; set; }
+        public int Max { get; set; }
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            bool upperExist = false, lowerExist = false, numExist = false, symbolExist = false;
+            char current = ' ', prev = 'o', prev2 = ' ';
+            try
+            {
+                string text = value.ToString();
+                if (text.Length < Min)
+                    throw new Exception("Password too short");
+                if (text.Length > Max)
+                    throw new Exception("Password too long");
+
+                for (int i = 0; i < text.Length; i++)
+                {
+                    if (Char.IsUpper(text[i])) upperExist = true;
+                    else if (Char.IsLower(text[i])) lowerExist = true;
+                    else if (Char.IsNumber(text[i])) numExist = true;
+                    else symbolExist = true;
+                    prev2 = prev;
+                    prev = current;
+                    current = text[i];
+                    if (prev == current && current == prev2)
+                    {
+                        throw new Exception("dont create a row of 3 of the same letters;");
+                    }
+                    if (Char.IsNumber(current) && Char.IsNumber(prev) && Char.IsNumber(prev2))
+                    {
+                        if ((current + 1 == prev && current + 2 == prev2) || (current - 1 == prev && current - 2 == prev2))
+                        {
+                            throw new Exception("there are 3 numbers in order");
+                        }
+                    }
+                }
+                if (!(upperExist && lowerExist && numExist && symbolExist))
+                    throw new Exception("password must contain a capital letter, a regular letterm, a symbol and a number");
+            }
+            catch (Exception ex)
+            {
+                return new ValidationResult(false, ex.Message);
+            }
+            return ValidationResult.ValidResult;
+        }
+    }
+    public class ValidPhone : ValidationRule
+    {
+        public int Len { get; set; }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             try
             {
-                string password = value.ToString();
-                bool lower = false, upper = false, number = false;
-                if (password.Length < 6) // password too short
-                    return new ValidationResult(false, "Too short");
-                if (password.Length > 15) // password too long
-                    return new ValidationResult(false, "Too long");
-                for (int i = 0; i < password.Length; i++)
+                string text = value.ToString();
+                if (text.Length < Len)
+                    return new ValidationResult(false, "Phone too short");
+                if (text.Length > Len)
+                    return new ValidationResult(false, "Phone too long");
+                if (text.IndexOf(" ") != -1)
+                    return new ValidationResult(false, "Phone must not include space");
+
+                for (int i = 0; i < text.Length; i++)
                 {
-                    if (!Char.IsLetterOrDigit(password[i]))
-                        return new ValidationResult(false, "Only letters and numbers");
-                    else
+                    if (!Char.IsDigit(text[i]))
                     {
-                        if (Char.IsLower(password[i]))
-                            lower = true;
-                        else if (Char.IsUpper(password[i]))
-                            upper = true;
-                        else
-                            number = true;
-                    }
-                    if (i > 1)
-                    {
-                        if (password[i - 1].Equals(password[i]) && password[i - 2].Equals(password[i]))
-                            return new ValidationResult(false, "Can't have sequence of the same letter");
-                        if (password[i - 1].Equals(password[i] - 1) && password[i - 2].Equals(password[i] - 2))
-                            return new ValidationResult(false, "Can't have upper sequence");
-                        if (password[i - 1].Equals(password[i] + 1) && password[i - 2].Equals(password[i] + 2))
-                            return new ValidationResult(false, "Can't have lower sequence");
+                        return new ValidationResult(false, "only digits...");
                     }
                 }
-                if (!lower || !upper || !number)
-                    return new ValidationResult(false, "Password must include at least one capital letter, one lower letter and number");
-                if (!Char.IsLetter(password[0]))
-                    return new ValidationResult(false, "Password must start with a letter");
             }
             catch (Exception ex)
             {
-                return new ValidationResult(false, "Error: " + ex.Message);
+                return new ValidationResult(false, ex.Message);
             }
             return ValidationResult.ValidResult;
         }
