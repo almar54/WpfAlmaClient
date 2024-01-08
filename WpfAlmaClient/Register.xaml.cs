@@ -23,5 +23,19 @@ namespace WpfAlmaClient
         {
             InitializeComponent();
         }
+
+        private void GoToLogIn(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+
+            Close();
+
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

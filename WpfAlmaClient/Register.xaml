@@ -4,10 +4,94 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAlmaClient"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Register"
-        Height="450"
-        Width="800"
-        Background="{StaticResource Primary}">
-    <Grid></Grid>
+        Height="600"
+        Width="500">
+    <Window.Resources></Window.Resources>
+    <Grid Background="#FFDADADA">
+        <Border Margin="15"
+                MinWidth="400"
+                Background="LightBlue"
+                VerticalAlignment="Center"
+                Padding="30"
+                CornerRadius="10"
+                MaxWidth="800"
+                MinHeight="400"
+                MaxHeight="950">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30"
+                                  Color="LightGray"
+                                  ShadowDepth="0" />
+            </Border.Effect>
+            <StackPanel>
+                <Image Source="/Images/roundLogo.jpg"
+                       Height="70"
+                       Width="70" />
+                <TextBlock Text="Welcome!"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Margin="0 0 0 0"
+                           FontFamily="Aharoni"
+                           Foreground="AntiqueWhite" />
+                <TextBox materialDesign:HintAssist.Hint="Username"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 0" />
+                <PasswordBox materialDesign:HintAssist.Hint="Password"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                             Margin="0 0" />
+                <TextBox materialDesign:HintAssist.Hint="First Name"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 0" />
+                <TextBox materialDesign:HintAssist.Hint="Last Name"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 0" />
+                <DatePicker Width="100"
+                            HorizontalAlignment="Left"
+                            Margin="5 0 0 0"
+                            materialDesign:HintAssist.Hint="Bith Date"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                    <DatePicker.Resources>
+                        <SolidColorBrush x:Key="MaterialDesignPaper"
+                                         Color="AntiqueWhite" />
+                    </DatePicker.Resources>
+                </DatePicker>
+                <TextBox materialDesign:HintAssist.Hint="Email"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 0" />
+                <TextBox materialDesign:HintAssist.Hint="Phone Number"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 0" />
+                <ComboBox materialDesign:HintAssist.Hint="City"
+                          materialDesign:HintAssist.HintOpacity=".26"
+                          IsEditable="True">
+                    <ComboBoxItem>Apple</ComboBoxItem>
+                    <ComboBoxItem>Banana</ComboBoxItem>
+                    <ComboBoxItem>Pear</ComboBoxItem>
+                    <ComboBoxItem>Orange</ComboBoxItem>
+                    <ComboBox.Resources>
+                        <SolidColorBrush x:Key="MaterialDesignPaper"
+                                         Color="AntiqueWhite" />
+                    </ComboBox.Resources>
+                </ComboBox>
+                <Grid Margin="0 5 0 0">
+                    <Button Content="Already Registered? Login"
+                            FontFamily="Aharoni"
+                            FontSize="10"
+                            HorizontalAlignment="Right"
+                            Foreground="AntiqueWhite"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Click="GoToLogIn" />
+                </Grid>
+                <Button Content="Register"
+                        FontFamily="Aharoni"
+                        FontSize="20"
+                        Foreground="AntiqueWhite"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Margin="0 5"
+                        Click="Register_Click" />
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>

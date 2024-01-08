@@ -7,8 +7,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Login"
-        Height="300"
-        Width="300"
+        Height="400"
+        Width="400"
         Background="{StaticResource Primary}">
     <Window.Resources>
         <ResourceDictionary>
@@ -28,38 +28,57 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
-    <StackPanel Orientation="Vertical">
-        <Image Source="C:\Users\User\source\repos\WpfAlmaClient\WpfAlmaClient\Images\roundLogo.jpg"
-               Width="50"
-               HorizontalAlignment="Center" />
-        <TextBlock Style="{StaticResource MaterialDesignTextBlock}"
-                   FontSize="30"
-                   FontFamily="Aharoni"
-                   HorizontalAlignment="Center">
-        Log In</TextBlock>
-        <TextBox x:Name="NameTextBox"
-                 materialDesign:HintAssist.Hint="UserName"
-                 materialDesign:HintAssist.HelperText="Helper text longer than error">
-            <TextBox.Text>
-                <Binding Path="Name"
-                         UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules></Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <PasswordBox x:Name="PasswordBox"
-                     Margin="0 30"
-                     FontFamily="Aharoni"
-                     FontSize="15"
-                     FontWeight="Bold"
-                     Foreground="Black"
-                     materialDesign:HintAssist.Hint="Password"
-                     materialDesign:TextFieldAssist.HasClearButton="True"
-                     materialDesign:HintAssist.HelperText="At least 8 characters" />
-        <materialDesign:Badged x:Name="CountingBadge"
-                               BadgeColorZoneMode="PrimaryDark">
-            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" 
-                    Click="Button_Click">Login</Button>
-        </materialDesign:Badged>
-    </StackPanel>
+    <Grid Background="#FFDADADA">
+        <Border Margin="15"
+                MinWidth="300"
+                Background="LightBlue"
+                VerticalAlignment="Center"
+                Padding="30"
+                CornerRadius="10"
+                MaxWidth="400"
+                MinHeight="300"
+                MaxHeight="400">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30"
+                                  Color="LightGray"
+                                  ShadowDepth="0" />
+            </Border.Effect>
+            <StackPanel>
+                <Image Source="/Images/roundLogo.jpg"
+                       Height="50"
+                       Width="50"
+                       Margin="0 -5 0 0" />
+                <TextBlock Text="Welcome Back!"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Margin="0 0 0 0"
+                           FontFamily="Aharoni"
+                           Foreground="AntiqueWhite" />
+                <TextBox materialDesign:HintAssist.Hint="Username"
+                         x:Name="tbUsername"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 0" TextChanged="tbUsername_TextChanged"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Password"
+                             x:Name="pbPass"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                             Margin="0 0" PasswordChanged="pbPass_PasswordChanged" />
+                <Grid Margin="0 5 0 0">
+                    <Button Content="Not a Member? Register"
+                            FontFamily="Aharoni"
+                            FontSize="10"
+                            HorizontalAlignment="Right"
+                            Foreground="AntiqueWhite"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Click="GoToRegister" />
+                </Grid>
+                <Button Content="Sign in"
+                        FontFamily="Aharoni"
+                        FontSize="20"
+                        Foreground="AntiqueWhite"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Margin="0 5"
+                        Click="Login_Click" />
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>

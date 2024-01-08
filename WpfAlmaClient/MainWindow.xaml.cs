@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
@@ -19,7 +20,8 @@ namespace WpfAlmaClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private UnityClient myService;
+        public MainWindow( User user)
         {
             InitializeComponent();
         }
