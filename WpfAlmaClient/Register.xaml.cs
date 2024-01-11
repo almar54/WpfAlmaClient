@@ -31,8 +31,10 @@ namespace WpfAlmaClient
             user = new User();
             mainGrid.DataContext = user;
             cbxCities.ItemsSource = myService.GetAllCities();
+            cbxCities.DisplayMemberPath = "Name";
             pass = rePass = false;
             tbUserName.Focus();
+
         }
 
         private void GoToLogIn(object sender, RoutedEventArgs e)
@@ -49,10 +51,23 @@ namespace WpfAlmaClient
                 dhErrors.IsOpen = true;
             }
             //username exists?
-            if (true)
+            if (!myService.IsUserNameFree(tbUserName.Text))
             {
-
+                tbDialogText.Text = "Username is already used";
+                dhErrors.IsOpen = true;
+                return;
             }
+            user.Password = pbPassword.Password;
+            user.City = cbxCities.SelectedItem as City;
+            user.IsManager = false;
+            if (myService.InsertUser(user)!=1)
+            {
+                tbDialogText.Text = "Something Is Wrong";
+                dhErrors.IsOpen = true;
+                return;
+            }
+            tbDialogText.Text = "Thank you!";
+            dhErrors.IsOpen = true;
         }
         private bool CheckData()
         {
@@ -101,8 +116,8 @@ namespace WpfAlmaClient
         {
             if (pbRePassword.Password.Equals(pbPassword.Password))
             {
-                pbPassword.BorderBrush = Brushes.Gray;
-                HintAssist.SetHelperText(pbRePassword, "Passworde need to match");
+                pbRePassword.BorderBrush = Brushes.Gray;
+                HintAssist.SetHelperText(pbRePassword, "Passwords match!");
             }
             else
             {

@@ -37,6 +37,12 @@
   <wsdl:message name="IUnity_DeleteUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnity_IsUserNameFree_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserNameFree" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_IsUserNameFree_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserNameFreeResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnity_GetAllCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCategories" />
   </wsdl:message>
@@ -154,6 +160,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/DeleteUser" message="tns:IUnity_DeleteUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/DeleteUserResponse" message="tns:IUnity_DeleteUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="IsUserNameFree">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/IsUserNameFree" message="tns:IUnity_IsUserNameFree_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/IsUserNameFreeResponse" message="tns:IUnity_IsUserNameFree_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetAllCategories" message="tns:IUnity_GetAllCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/GetAllCategoriesResponse" message="tns:IUnity_GetAllCategories_OutputMessage" />
@@ -259,6 +269,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="http://tempuri.org/IUnity/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserNameFree">
+      <soap:operation soapAction="http://tempuri.org/IUnity/IsUserNameFree" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

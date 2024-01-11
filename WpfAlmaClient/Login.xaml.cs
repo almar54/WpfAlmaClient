@@ -70,18 +70,18 @@ namespace WpfAlmaClient
         private void tbUsername_TextChanged(object sender, TextChangedEventArgs e)
         {
             ValidUserName valid = new ValidUserName();
+            valid.Min = 5;
+            valid.Max = 10;
             ValidationResult result = valid.Validate(tbUsername.Text, null);
             if (!result.IsValid)
             {
                 tbUsername.BorderBrush = Brushes.Red;
-                tbUsername.Foreground = Brushes.Red;
                 tbUsername.ToolTip = result.ErrorContent.ToString();
                 userNameOk = false;
             }
             else
             {
-                tbUsername.BorderBrush = Brushes.Transparent;
-                tbUsername.Foreground = Brushes.Black;
+                tbUsername.BorderBrush = Brushes.Black;
                 tbUsername.ToolTip = null;
                 userNameOk = true;
             }
@@ -90,18 +90,18 @@ namespace WpfAlmaClient
         private void pbPass_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ValidPassword valid = new ValidPassword();
+            valid.Min = 6;
+            valid.Max = 15;
             ValidationResult result = valid.Validate(pbPass.Password, null);
             if (!result.IsValid)
             {
                 pbPass.BorderBrush = Brushes.Red;
-                pbPass.Foreground = Brushes.Red;
                 pbPass.ToolTip = result.ErrorContent.ToString();
                 passOk = false;
             }
             else
             {
                 pbPass.BorderBrush = Brushes.Transparent;
-                pbPass.Foreground = Brushes.Black;
                 pbPass.ToolTip = null;
                 passOk = true;
             }

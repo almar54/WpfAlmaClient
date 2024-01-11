@@ -487,6 +487,12 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/DeleteUser", ReplyAction="http://tempuri.org/IUnity/DeleteUserResponse")]
         System.Threading.Tasks.Task<int> DeleteUserAsync(WpfAlmaClient.CrisisUnityService.User user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/IsUserNameFree", ReplyAction="http://tempuri.org/IUnity/IsUserNameFreeResponse")]
+        bool IsUserNameFree(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/IsUserNameFree", ReplyAction="http://tempuri.org/IUnity/IsUserNameFreeResponse")]
+        System.Threading.Tasks.Task<bool> IsUserNameFreeAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllCategories", ReplyAction="http://tempuri.org/IUnity/GetAllCategoriesResponse")]
         WpfAlmaClient.CrisisUnityService.CategoryList GetAllCategories();
         
@@ -649,6 +655,14 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         public System.Threading.Tasks.Task<int> DeleteUserAsync(WpfAlmaClient.CrisisUnityService.User user) {
             return base.Channel.DeleteUserAsync(user);
+        }
+        
+        public bool IsUserNameFree(string username) {
+            return base.Channel.IsUserNameFree(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsUserNameFreeAsync(string username) {
+            return base.Channel.IsUserNameFreeAsync(username);
         }
         
         public WpfAlmaClient.CrisisUnityService.CategoryList GetAllCategories() {
