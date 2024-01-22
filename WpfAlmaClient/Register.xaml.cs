@@ -40,8 +40,9 @@ namespace WpfAlmaClient
         private void GoToLogIn(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
+            this.Close();
             login.ShowDialog();
-            Close();
+
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -68,6 +69,9 @@ namespace WpfAlmaClient
             }
             tbDialogText.Text = "Thank you!";
             dhErrors.IsOpen = true;
+            Userwnd userwnd = new Userwnd();
+            this.Close();
+            userwnd.ShowDialog();
         }
         private bool CheckData()
         {

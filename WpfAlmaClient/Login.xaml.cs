@@ -34,9 +34,8 @@ namespace WpfAlmaClient
         private void GoToRegister(object sender, RoutedEventArgs e)
         {
             Register register = new Register();
+            this.Close();
             register.ShowDialog();
-
-            Close();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
@@ -65,6 +64,9 @@ namespace WpfAlmaClient
                 MessageBox.Show("Regular user login");
             }
             tbUsername.Text = pbPass.Password = string.Empty;
+            Userwnd userwnd = new Userwnd();
+            this.Close();
+            userwnd.ShowDialog();
         }
 
         private void tbUsername_TextChanged(object sender, TextChangedEventArgs e)

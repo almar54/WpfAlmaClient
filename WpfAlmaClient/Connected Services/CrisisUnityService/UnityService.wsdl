@@ -67,6 +67,12 @@
   <wsdl:message name="IUnity_DeleteCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnity_IsCtgNameFree_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsCtgNameFree" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_IsCtgNameFree_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsCtgNameFreeResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnity_GetAllCities_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCities" />
   </wsdl:message>
@@ -179,6 +185,10 @@
     <wsdl:operation name="DeleteCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/DeleteCategory" message="tns:IUnity_DeleteCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/DeleteCategoryResponse" message="tns:IUnity_DeleteCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsCtgNameFree">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/IsCtgNameFree" message="tns:IUnity_IsCtgNameFree_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/IsCtgNameFreeResponse" message="tns:IUnity_IsCtgNameFree_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllCities">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetAllCities" message="tns:IUnity_GetAllCities_InputMessage" />
@@ -314,6 +324,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteCategory">
       <soap:operation soapAction="http://tempuri.org/IUnity/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCtgNameFree">
+      <soap:operation soapAction="http://tempuri.org/IUnity/IsCtgNameFree" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfAlmaClient.Login"
+﻿<Window x:Class="WpfAlmaClient.CreateEventwnd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfAlmaClient"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login"
+        Title="CreateEventwnd"
         Height="400"
         Width="400">
     <Window.Resources>
@@ -47,36 +47,53 @@
                        Height="50"
                        Width="50"
                        Margin="0 -5 0 0" />
-                <TextBlock Text="Welcome Back!"
-                           FontSize="30"
+                <TextBlock Text="Let's add a new event!"
+                           FontSize="20"
                            FontWeight="Bold"
                            Margin="0 0 0 0"
                            FontFamily="Aharoni"
-                           Foreground="AntiqueWhite" />
-                <TextBox materialDesign:HintAssist.Hint="Username"
-                         x:Name="tbUsername"
+                           Foreground="AntiqueWhite"
+                           HorizontalAlignment="Center" />
+                <TextBox x:Name="tbEventName"
+                         materialDesign:HintAssist.Hint="Enter event Name"
+                         materialDesign:HintAssist.HelperText="at least 2 letters, Start with Capital"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         Margin="0 0" TextChanged="tbUsername_TextChanged"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Password"
-                             x:Name="pbPass"
-                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                             Margin="0 0" PasswordChanged="pbPass_PasswordChanged" />
-                <Grid Margin="0 5 0 0">
-                    <Button Content="Not a Member? Register"
-                            FontFamily="Aharoni"
-                            FontSize="10"
-                            HorizontalAlignment="Right"
-                            Foreground="AntiqueWhite"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            Click="GoToRegister" />
-                </Grid>
-                <Button Content="Sign in"
+                         Margin="0 0 0 10"
+                         TextChanged="tbEventName_TextChanged">
+                    <TextBox.Text>
+                        <Binding Path="EventName"
+                                 UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:ValidName min="2"
+                                                 max="10" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <ComboBox x:Name="cbxSeverity"
+                          materialDesign:HintAssist.Hint="Select event severity">
+                    <ComboBox.Resources>
+                        <SolidColorBrush x:Key="MaterialDesignPaper"
+                                         Color="AntiqueWhite" />
+                    </ComboBox.Resources>
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                </ComboBox>
+                <Button Content="Add Event"
                         FontFamily="Aharoni"
                         FontSize="20"
                         Foreground="AntiqueWhite"
                         Style="{StaticResource MaterialDesignFlatButton}"
                         Margin="0 5"
-                        Click="Login_Click" />
+                        Click="AddEvent_Click" />
             </StackPanel>
         </Border>
     </Grid>

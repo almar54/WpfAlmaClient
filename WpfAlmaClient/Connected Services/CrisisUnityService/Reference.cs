@@ -517,6 +517,12 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/DeleteCategory", ReplyAction="http://tempuri.org/IUnity/DeleteCategoryResponse")]
         System.Threading.Tasks.Task<int> DeleteCategoryAsync(WpfAlmaClient.CrisisUnityService.Category category);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/IsCtgNameFree", ReplyAction="http://tempuri.org/IUnity/IsCtgNameFreeResponse")]
+        bool IsCtgNameFree(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/IsCtgNameFree", ReplyAction="http://tempuri.org/IUnity/IsCtgNameFreeResponse")]
+        System.Threading.Tasks.Task<bool> IsCtgNameFreeAsync(string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllCities", ReplyAction="http://tempuri.org/IUnity/GetAllCitiesResponse")]
         WpfAlmaClient.CrisisUnityService.CityList GetAllCities();
         
@@ -695,6 +701,14 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         public System.Threading.Tasks.Task<int> DeleteCategoryAsync(WpfAlmaClient.CrisisUnityService.Category category) {
             return base.Channel.DeleteCategoryAsync(category);
+        }
+        
+        public bool IsCtgNameFree(string name) {
+            return base.Channel.IsCtgNameFree(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsCtgNameFreeAsync(string name) {
+            return base.Channel.IsCtgNameFreeAsync(name);
         }
         
         public WpfAlmaClient.CrisisUnityService.CityList GetAllCities() {

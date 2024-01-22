@@ -77,8 +77,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="CreateCategorywnd.xaml.cs">
+      <DependentUpon>CreateCategorywnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEventwnd.xaml.cs">
+      <DependentUpon>CreateEventwnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Postwnd.xaml.cs">
+      <DependentUpon>Postwnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Userwnd.xaml.cs">
+      <DependentUpon>Userwnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
   </ItemGroup>
@@ -144,6 +156,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CreateCategorywnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateEventwnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,7 +172,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Postwnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Userwnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +208,18 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Posts\Post1\hoodie2.jpg" />
+    <Resource Include="Images\Posts\Post1\shirt1.jpg" />
+    <Resource Include="Images\Posts\Post1\shirt2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Posts\Post1\hoodie1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Posts\Post1\pants2.jpg" />
+    <Resource Include="Images\Posts\Post1\pants3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
