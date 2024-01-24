@@ -121,6 +121,12 @@
   <wsdl:message name="IUnity_DeleteEvent_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteEventResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnity_IsEventNameFree_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsEventNameFree" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_IsEventNameFree_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsEventNameFreeResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnity_GetAllPosts_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPosts" />
   </wsdl:message>
@@ -221,6 +227,10 @@
     <wsdl:operation name="DeleteEvent">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/DeleteEvent" message="tns:IUnity_DeleteEvent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/DeleteEventResponse" message="tns:IUnity_DeleteEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsEventNameFree">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/IsEventNameFree" message="tns:IUnity_IsEventNameFree_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/IsEventNameFreeResponse" message="tns:IUnity_IsEventNameFree_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllPosts">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetAllPosts" message="tns:IUnity_GetAllPosts_InputMessage" />
@@ -405,6 +415,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteEvent">
       <soap:operation soapAction="http://tempuri.org/IUnity/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsEventNameFree">
+      <soap:operation soapAction="http://tempuri.org/IUnity/IsEventNameFree" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -11,19 +11,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreatePostwnd.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreatePostwnd : Window
     {
-        //private UnityClient myService;
-        public MainWindow( User user)
+        public CreatePostwnd()
         {
             InitializeComponent();
+        }
+
+        private void tbPTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

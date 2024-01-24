@@ -463,10 +463,10 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllUsers", ReplyAction="http://tempuri.org/IUnity/GetAllUsersResponse")]
         System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.UserList> GetAllUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Login", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Loginwnd", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
         WpfAlmaClient.CrisisUnityService.User Login(WpfAlmaClient.CrisisUnityService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Login", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Loginwnd", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
         System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.User> LoginAsync(WpfAlmaClient.CrisisUnityService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/InsertUser", ReplyAction="http://tempuri.org/IUnity/InsertUserResponse")]
@@ -570,6 +570,12 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/DeleteEvent", ReplyAction="http://tempuri.org/IUnity/DeleteEventResponse")]
         System.Threading.Tasks.Task<int> DeleteEventAsync(WpfAlmaClient.CrisisUnityService.Event _event);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/IsEventNameFree", ReplyAction="http://tempuri.org/IUnity/IsEventNameFreeResponse")]
+        bool IsEventNameFree(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/IsEventNameFree", ReplyAction="http://tempuri.org/IUnity/IsEventNameFreeResponse")]
+        System.Threading.Tasks.Task<bool> IsEventNameFreeAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllPosts", ReplyAction="http://tempuri.org/IUnity/GetAllPostsResponse")]
         WpfAlmaClient.CrisisUnityService.PostList GetAllPosts();
@@ -773,6 +779,14 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         public System.Threading.Tasks.Task<int> DeleteEventAsync(WpfAlmaClient.CrisisUnityService.Event _event) {
             return base.Channel.DeleteEventAsync(_event);
+        }
+        
+        public bool IsEventNameFree(string name) {
+            return base.Channel.IsEventNameFree(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsEventNameFreeAsync(string name) {
+            return base.Channel.IsEventNameFreeAsync(name);
         }
         
         public WpfAlmaClient.CrisisUnityService.PostList GetAllPosts() {

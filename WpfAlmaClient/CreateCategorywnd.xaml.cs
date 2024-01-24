@@ -57,16 +57,20 @@ namespace WpfAlmaClient
             {
                 MessageBox.Show("You need to enter a Name", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            if (!myService.IsCtgNameFree(tbCategoryName.Text.Trim(' ')))
+            if (!myService.IsCtgNameFree(tbCategoryName.Text.Trim()))
             {
                 MessageBox.Show("This category name already exists", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            category.Name = tbCategoryName.Text.Trim(' ');
+            category.Name = tbCategoryName.Text.Trim();
             if (myService.InsertCategory(category) != 1)
             {
                 MessageBox.Show("Something is wrong...", "Oops", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
+            }
+            if (!nameOk)
+            {
+                MessageBox.Show("You have errors, go back anf change them", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             MessageBox.Show("All good! lets go!", "Thank You", MessageBoxButton.OK);
             Userwnd userwnd = new Userwnd();

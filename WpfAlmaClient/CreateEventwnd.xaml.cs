@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
@@ -19,19 +20,65 @@ namespace WpfAlmaClient
     /// </summary>
     public partial class CreateEventwnd : Window
     {
+        private UnityClient myService;
+        private bool nameOk;
+        private Event @event;
         public CreateEventwnd()
         {
             InitializeComponent();
+            myService = new UnityClient();
+            nameOk = false;
+            @event = new Event();
         }
 
         private void tbEventName_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            ValidName valid = new ValidName();
+            valid.min = 2;
+            valid.max = 10;
+            ValidationResult result = valid.Validate(tbEventName.Text.Trim(), null);
+            if (!result.IsValid)
+            {
+                tbEventName.BorderBrush = Brushes.Red;
+                tbEventName.ToolTip = result.ErrorContent.ToString();
+                nameOk = false;
+            }
+            else
+            {
+                tbEventName.BorderBrush = Brushes.Black;
+                tbEventName.ToolTip = null;
+                nameOk = true;
+            }
         }
 
         private void AddEvent_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbEventName.Text.Equals(string.Empty) || cbxSeverity.SelectedItem.Equals(null))
+            {
+                MessageBox.Show("You need to enter a Name AND severity", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (!myService.IsEventNameFree(tbEventName.Text.Trim()))
+            {
+                MessageBox.Show("This category name already exists", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            @event.Name = tbEventName.Text.Trim();
+            @event.Severity = int.Parse(cbxSeverity.SelectionBoxItem.ToString());
+            MessageBox.Show(cbxSeverity.SelectionBoxItem.ToString());
+            if (myService.InsertEvent(@event) != 1)
+            {
+                MessageBox.Show("Something is wrong...", "Oops", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if (!nameOk)
+            {
+                MessageBox.Show("You have errors, go back anf change them", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            MessageBox.Show("All good! lets go!", "Thank You", MessageBoxButton.OK);
+            Userwnd userwnd = new Userwnd();
+            this.Close();
+            userwnd.ShowDialog();
         }
     }
 }

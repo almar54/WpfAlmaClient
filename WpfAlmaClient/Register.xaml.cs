@@ -17,14 +17,14 @@ using WpfAlmaClient.CrisisUnityService;
 namespace WpfAlmaClient
 {
     /// <summary>
-    /// Interaction logic for Register.xaml
+    /// Interaction logic for Registerwnd.xaml
     /// </summary>
-    public partial class Register : Window
+    public partial class Registerwnd : Window
     {
         private UnityClient myService;
         private User user;
         private bool pass, rePass;
-        public Register()
+        public Registerwnd()
         {
             InitializeComponent();
             myService = new UnityClient();
@@ -39,7 +39,7 @@ namespace WpfAlmaClient
 
         private void GoToLogIn(object sender, RoutedEventArgs e)
         {
-            Login login = new Login();
+            Loginwnd login = new Loginwnd();
             this.Close();
             login.ShowDialog();
 

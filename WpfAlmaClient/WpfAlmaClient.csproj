@@ -83,6 +83,9 @@
     <Compile Include="CreateEventwnd.xaml.cs">
       <DependentUpon>CreateEventwnd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreatePostwnd.xaml.cs">
+      <DependentUpon>CreatePostwnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Postwnd.xaml.cs">
       <DependentUpon>Postwnd.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateEventwnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreatePostwnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
