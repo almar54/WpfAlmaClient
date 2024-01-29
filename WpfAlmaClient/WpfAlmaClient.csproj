@@ -217,16 +217,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Posts\Post1\hoodie2.jpg" />
-    <Resource Include="Images\Posts\Post1\shirt1.jpg" />
-    <Resource Include="Images\Posts\Post1\shirt2.jpg" />
+    <Resource Include="Images\Posts\TryPost\hoodie2.jpg" />
+    <Resource Include="Images\Posts\TryPost\shirt1.jpg" />
+    <Resource Include="Images\Posts\TryPost\shirt2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Posts\Post1\hoodie1.jpg" />
+    <Resource Include="Images\Posts\TryPost\hoodie1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Posts\Post1\pants2.jpg" />
-    <Resource Include="Images\Posts\Post1\pants3.jpg" />
+    <Resource Include="Images\Posts\TryPost\pants2.jpg" />
+    <Resource Include="Images\Posts\TryPost\pants3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Posts\Post1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

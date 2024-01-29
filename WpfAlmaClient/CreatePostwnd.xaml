@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAlmaClient"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="CreatePostwnd" Height="400" Width="400">
+        Title="CreatePostwnd"
+        Height="700"
+        Width="550">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,14 +30,14 @@
     </Window.Resources>
     <Grid Background="#FFDADADA">
         <Border Margin="15"
-                MinWidth="300"
+                MinWidth="400"
                 Background="LightBlue"
                 VerticalAlignment="Center"
                 Padding="30"
                 CornerRadius="10"
-                MaxWidth="400"
-                MinHeight="300"
-                MaxHeight="400">
+                MaxWidth="550"
+                MinHeight="550"
+                MaxHeight="700">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30"
                                   Color="LightGray"
@@ -45,7 +48,7 @@
                        Height="50"
                        Width="50"
                        Margin="0 -5 0 0" />
-                <TextBlock Text="!"
+                <TextBlock Text="Create a new post!"
                            FontSize="20"
                            FontWeight="Bold"
                            Margin="0 0 0 0"
@@ -68,13 +71,58 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
+                <TextBox x:Name="tbDescription"
+                         materialDesign:HintAssist.Hint="Description"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Visible"
+                         Height="Auto"
+                         MaxWidth="350"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         Margin="0 7 0 5" />
+                <DatePicker x:Name="DPpostDate"
+                            SelectedDate="{x:Static sys:DateTime.Now}"
+                            IsEnabled="False"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                            Width="80"
+                            materialDesign:HintAssist.HelperText="Post Date"
+                            HorizontalAlignment="Left"
+                            Margin="1 5 0 5" />
+                <materialDesign:TimePicker x:Name="TPpostTime"
+                                           IsEnabled="False"
+                                           Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                                           SelectedTime="{x:Static sys:DateTime.Now}"
+                                           Width="80"
+                                           HorizontalAlignment="Left"
+                                           materialDesign:HintAssist.HelperText="Post Time"
+                                           Margin="1 5 0 5" />
+                <ComboBox x:Name="cbxCities"
+                          materialDesign:HintAssist.Hint="City"
+                          materialDesign:HintAssist.HintOpacity=".26"
+                          IsEditable="True"
+                          Margin="0 10 0 0">
+                    <ComboBox.Resources>
+                        <SolidColorBrush x:Key="MaterialDesignPaper"
+                                         Color="AntiqueWhite" />
+                    </ComboBox.Resources>
+                </ComboBox>
+                <Button Content="Add Photo"
+                        Click="AddPhotoButton_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="imagesContainer"
+                               Orientation="Horizontal">
+                        <!--<Image x:Name="ChosenImage"
+                               Stretch="Uniform" />-->
+                    </WrapPanel>
+                </ScrollViewer>
                 <Button Content="Add Post"
                         FontFamily="Aharoni"
                         FontSize="20"
                         Foreground="AntiqueWhite"
                         Style="{StaticResource MaterialDesignFlatButton}"
                         Margin="0 5 0 5"
-                        />
+                        Click="CreatePost_Click" />
             </StackPanel>
         </Border>
     </Grid>
