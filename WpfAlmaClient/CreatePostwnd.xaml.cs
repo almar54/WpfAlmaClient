@@ -22,13 +22,11 @@ namespace WpfAlmaClient
     public partial class CreatePostwnd : Window
     {
         private UnityClient myService;
-        private bool nameOk;
         private Post post;
         public CreatePostwnd()
         {
             InitializeComponent();
             myService = new UnityClient();
-            nameOk = false;
             post = new Post();
             cbxCities.ItemsSource = myService.GetAllCities();
             cbxCities.DisplayMemberPath = "Name";
@@ -44,23 +42,36 @@ namespace WpfAlmaClient
             {
                 tbPTitle.BorderBrush = Brushes.Red;
                 tbPTitle.ToolTip = result.ErrorContent.ToString();
-                nameOk = false;
+                
             }
             else
             {
                 tbPTitle.BorderBrush = Brushes.Black;
                 tbPTitle.ToolTip = null;
-                nameOk = true;
+                
             }
         }
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            if (tbPTitle.Text.Trim().Equals(string.Empty) || tbDescription.Text.Trim().Equals(string.Empty) || cbxCities.SelectedItem == null)
+            if (tbPTitle.Text.Equals(string.Empty) || tbDescription.Text.Equals(string.Empty) || cbxCities.SelectedItem == null)
             {
-
+                MessageBox.Show("You must fill all of the fields!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            post.Title = tbPTitle.Text;
+            post.Description = tbDescription.Text;
+            post.City = cbxCities.SelectedItem as City;
+            if (myService.InsertPost(post) != 1)
+            {
+                MessageBox.Show("Something is wrong...", "Oops", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            MessageBox.Show("All good! lets go!", "Thank You!", MessageBoxButton.OK);
+            Userwnd userwnd = new Userwnd();
+            this.Close();
+            userwnd.ShowDialog();
+
         }
 
         private void AddPhotoButton_Click(object sender, RoutedEventArgs e)
@@ -90,9 +101,12 @@ namespace WpfAlmaClient
                         // Create a new Image control to display the selected image
                         Image imageControl = new Image();
                         imageControl.Source = bitmapImage;
+                        imageControl.Width = 80; 
+                        imageControl.Height = 80;
 
                         // Set some margin to separate images
                         imageControl.Margin = new Thickness(5);
+                        imagesContainer.Children.Add(imageControl);
 
                     }
 

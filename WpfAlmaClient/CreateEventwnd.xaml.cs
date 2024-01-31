@@ -53,7 +53,7 @@ namespace WpfAlmaClient
 
         private void AddEvent_Click(object sender, RoutedEventArgs e)
         {
-            if (tbEventName.Text.Equals(string.Empty) || cbxSeverity.SelectedItem.Equals(null))
+            if (tbEventName.Text.Trim().Equals(string.Empty) || cbxSeverity.SelectedItem.Equals(null))
             {
                 MessageBox.Show("You need to enter a Name AND severity", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
