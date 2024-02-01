@@ -16,13 +16,20 @@ using WpfAlmaClient.CrisisUnityService;
 namespace WpfAlmaClient
 {
     /// <summary>
-    /// Interaction logic for Userwnd.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Userwnd : Window
+    public partial class Window1 : Window
     {
-        public Userwnd(User user)
+        public Window1()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User { ID = 1 };
+            CreatePostwnd createPostwnd = new CreatePostwnd(user);
+            createPostwnd.ShowDialog();
         }
     }
 }

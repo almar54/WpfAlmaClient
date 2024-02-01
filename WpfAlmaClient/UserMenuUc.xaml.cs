@@ -10,17 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
     /// <summary>
-    /// Interaction logic for Userwnd.xaml
+    /// Interaction logic for UserMenuUc.xaml
     /// </summary>
-    public partial class Userwnd : Window
+    public partial class UserMenuUc : UserControl
     {
-        public Userwnd(User user)
+        public UserMenuUc()
         {
             InitializeComponent();
         }

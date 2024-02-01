@@ -83,11 +83,11 @@
                              Margin="0 5 0 5"
                              TextChanged="tbPTitle_TextChanged">
                         <TextBox.Text>
-                            <Binding Path="PostTitle"
+                            <Binding Path="Title"
                                      UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <local:ValidName min="2"
-                                                     max="20" />
+                                    <local:ValidTitle min="2"
+                                                      max="20" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -99,6 +99,7 @@
                              VerticalScrollBarVisibility="Visible"
                              VerticalAlignment="Top"
                              MaxWidth="350"
+                             Text="{Binding Path=Description}"
                              Style="{StaticResource MaterialDesignTextBox}"
                              Margin="0 10 0 5" />
                     <DatePicker x:Name="DPpostDate"
@@ -122,6 +123,24 @@
                               materialDesign:HintAssist.HintOpacity=".26"
                               IsEditable="True"
                               Margin="0 10 0 0">
+                        <ComboBox.Resources>
+                            <SolidColorBrush x:Key="MaterialDesignPaper"
+                                             Color="AntiqueWhite" />
+                        </ComboBox.Resources>
+                    </ComboBox>
+                    <ComboBox x:Name="cbxEvent"
+                              materialDesign:HintAssist.Hint="Choose Event"
+                              materialDesign:HintAssist.HintOpacity=".26"
+                              Margin="0 10 0 0">
+                        <ComboBox.Resources>
+                            <SolidColorBrush x:Key="MaterialDesignPaper"
+                                             Color="AntiqueWhite" />
+                        </ComboBox.Resources>
+                    </ComboBox>
+                    <ComboBox x:Name="cbxCategories"
+                              materialDesign:HintAssist.Hint="Choose relevant category"
+                              materialDesign:HintAssist.HintOpacity=".26"
+                             Margin="0 10 0 0">
                         <ComboBox.Resources>
                             <SolidColorBrush x:Key="MaterialDesignPaper"
                                              Color="AntiqueWhite" />

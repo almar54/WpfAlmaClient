@@ -65,7 +65,6 @@ namespace WpfAlmaClient
             }
             @event.Name = tbEventName.Text.Trim();
             @event.Severity = int.Parse(cbxSeverity.SelectionBoxItem.ToString());
-            MessageBox.Show(cbxSeverity.SelectionBoxItem.ToString());
             if (myService.InsertEvent(@event) != 1)
             {
                 MessageBox.Show("Something is wrong...", "Oops", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -74,6 +73,7 @@ namespace WpfAlmaClient
             if (!nameOk)
             {
                 MessageBox.Show("You have errors, go back and change them", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             MessageBox.Show("All good! lets go!", "Thank You", MessageBoxButton.OK);
             Userwnd userwnd = new Userwnd();

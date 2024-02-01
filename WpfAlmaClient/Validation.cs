@@ -39,6 +39,34 @@ namespace WpfAlmaClient
             return ValidationResult.ValidResult;
         }
     }
+    public class ValidTitle : ValidationRule
+    {
+        public int min { get; set; }
+        public int max { get; set; }
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            try
+            {
+                string name = value.ToString();
+                if (name.Length < min) // name too short
+                    return new ValidationResult(false, "Too short");
+                if (name.Length > max) // name too long
+                    return new ValidationResult(false, "Too long");
+                foreach (char c in name)
+                    if (!Char.IsLetter(c) && c != ' ')
+                        return new ValidationResult(false, "Only letters and spaces");
+                if (!Char.IsUpper(name[0]))
+                    return new ValidationResult(false, "Name must start with capital letter");
+                if (!Char.IsLetter(name[name.Length - 1]))
+                    return new ValidationResult(false, "Name can't end with space");
+            }
+            catch (Exception ex)
+            {
+                return new ValidationResult(false, "Error: " + ex.Message);
+            }
+            return ValidationResult.ValidResult;
+        }
+    }
 
     public class ValidUserName : ValidationRule
     {

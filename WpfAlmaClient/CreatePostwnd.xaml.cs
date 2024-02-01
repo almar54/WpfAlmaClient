@@ -23,13 +23,20 @@ namespace WpfAlmaClient
     {
         private UnityClient myService;
         private Post post;
-        public CreatePostwnd()
+        private User user;
+        public CreatePostwnd(User user)
         {
             InitializeComponent();
             myService = new UnityClient();
+            this.user = user;
             post = new Post();
+            this.DataContext = post;
             cbxCities.ItemsSource = myService.GetAllCities();
             cbxCities.DisplayMemberPath = "Name";
+            cbxEvent.ItemsSource = myService.GetAllEvents();
+            cbxEvent.DisplayMemberPath = "Name";
+            cbxCategories.ItemsSource = myService.GetAllCategories();
+            cbxCategories.DisplayMemberPath = "Name";
         }
 
         private void tbPTitle_TextChanged(object sender, TextChangedEventArgs e)
@@ -59,9 +66,13 @@ namespace WpfAlmaClient
                 MessageBox.Show("You must fill all of the fields!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            post.Title = tbPTitle.Text;
-            post.Description = tbDescription.Text;
+            post.User = user;
             post.City = cbxCities.SelectedItem as City;
+            post.Category = cbxCategories.SelectedItem as Category;
+            post.Event = cbxEvent.SelectedItem as Event;
+            post.PostDate = (DateTime)DPpostDate.SelectedDate;
+            post.PostTime = (DateTime)TPpostTime.SelectedTime;
+            
             if (myService.InsertPost(post) != 1)
             {
                 MessageBox.Show("Something is wrong...", "Oops", MessageBoxButton.OK, MessageBoxImage.Exclamation);

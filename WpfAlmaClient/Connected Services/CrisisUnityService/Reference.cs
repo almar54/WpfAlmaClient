@@ -463,10 +463,10 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllUsers", ReplyAction="http://tempuri.org/IUnity/GetAllUsersResponse")]
         System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.UserList> GetAllUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Loginwnd", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Login", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
         WpfAlmaClient.CrisisUnityService.User Login(WpfAlmaClient.CrisisUnityService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Loginwnd", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/Login", ReplyAction="http://tempuri.org/IUnity/LoginResponse")]
         System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.User> LoginAsync(WpfAlmaClient.CrisisUnityService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/InsertUser", ReplyAction="http://tempuri.org/IUnity/InsertUserResponse")]

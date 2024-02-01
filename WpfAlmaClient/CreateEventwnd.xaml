@@ -64,8 +64,8 @@
                         <Binding Path="EventName"
                                  UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:ValidName min="2"
-                                                 max="10" />
+                                <local:ValidTitle min="2"
+                                                 max="20" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
