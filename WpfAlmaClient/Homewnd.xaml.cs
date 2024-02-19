@@ -12,17 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
     /// <summary>
-    /// Interaction logic for UserMenuUc.xaml
+    /// Interaction logic for Homewnd.xaml
     /// </summary>
-    public partial class UserMenuUc : UserControl
+    public partial class Homewnd : Window
     {
-        public UserMenuUc()
+        public Homewnd(User user)
         {
+
             InitializeComponent();
+            tbUserName.Text += " " + user.UserName;
         }
     }
 }

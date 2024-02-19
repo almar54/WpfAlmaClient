@@ -28,8 +28,8 @@ namespace WpfAlmaClient
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             User user = new User { ID = 1 };
-            CreatePostwnd createPostwnd = new CreatePostwnd(user);
-            createPostwnd.ShowDialog();
+            Homewnd homewnd = new Homewnd(user);
+            homewnd.ShowDialog();
         }
     }
 }

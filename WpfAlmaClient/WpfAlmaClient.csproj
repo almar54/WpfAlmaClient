@@ -92,8 +92,8 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserMenuUc.xaml.cs">
-      <DependentUpon>UserMenuUc.xaml</DependentUpon>
+    <Compile Include="Homewnd.xaml.cs">
+      <DependentUpon>Homewnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Userwnd.xaml.cs">
       <DependentUpon>Userwnd.xaml</DependentUpon>
@@ -193,7 +193,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserMenuUc.xaml">
+    <Page Include="Homewnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -69,7 +69,7 @@ namespace WpfAlmaClient
             }
             tbDialogText.Text = "Thank you!";
             dhErrors.IsOpen = true;
-            Userwnd userwnd = new Userwnd();
+            Userwnd userwnd = new Userwnd(user);
             this.Close();
             userwnd.ShowDialog();
         }

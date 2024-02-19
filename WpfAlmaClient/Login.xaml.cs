@@ -64,7 +64,7 @@ namespace WpfAlmaClient
                 MessageBox.Show("Regular user login");
             }
             tbUsername.Text = pbPass.Password = string.Empty;
-            Userwnd userwnd = new Userwnd();
+            Userwnd userwnd = new Userwnd(user);
             this.Close();
             userwnd.ShowDialog();
         }

@@ -23,9 +23,11 @@ namespace WpfAlmaClient
         private UnityClient myService;
         private bool nameOk;
         private Event @event;
-        public CreateEventwnd()
+        private User user;
+        public CreateEventwnd(User user)
         {
             InitializeComponent();
+            this.user = user;
             myService = new UnityClient();
             nameOk = false;
             @event = new Event();
@@ -76,7 +78,7 @@ namespace WpfAlmaClient
                 return;
             }
             MessageBox.Show("All good! lets go!", "Thank You", MessageBoxButton.OK);
-            Userwnd userwnd = new Userwnd();
+            Userwnd userwnd = new Userwnd(user);
             this.Close();
             userwnd.ShowDialog();
         }
