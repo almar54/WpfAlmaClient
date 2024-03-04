@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="GetAllUsers">
     <xs:complexType>
       <xs:sequence />
@@ -285,10 +286,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetPostsByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostsByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetPostsByDateResult" nillable="true" type="q20:PostList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="InsertPost">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="post" nillable="true" type="q20:Post" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="post" nillable="true" type="q21:Post" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -302,7 +317,7 @@
   <xs:element name="UpdatePost">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="post" nillable="true" type="q21:Post" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="post" nillable="true" type="q22:Post" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -316,7 +331,7 @@
   <xs:element name="DeletePost">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="post" nillable="true" type="q22:Post" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="post" nillable="true" type="q23:Post" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -324,6 +339,48 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeletePostResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIamge">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="post" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIamgeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetIamgeResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageArray" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveImageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImagesByPost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="post" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImagesByPostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetImagesByPostResult" nillable="true" type="q24:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -72,12 +72,15 @@ namespace WpfAlmaClient
             post.Event = cbxEvent.SelectedItem as Event;
             post.PostDate = (DateTime)DPpostDate.SelectedDate;
             post.PostTime = (DateTime)TPpostTime.SelectedTime;
-            
-            if (myService.InsertPost(post) != 1)
+            int id = myService.InsertPost(post);
+            if (id==-1)
             {
                 MessageBox.Show("Something is wrong...", "Oops", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
+            //יצירת תיקייה
+            //שמירת כל התמונות בתיקייה נוכחית
+            //שמירת כל התמונות בשירות
             MessageBox.Show("All good! lets go!", "Thank You!", MessageBoxButton.OK);
             Userwnd userwnd = new Userwnd(user);
             this.Close();

@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUnity_GetAllUsers_InputMessage">
@@ -133,6 +134,12 @@
   <wsdl:message name="IUnity_GetAllPosts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPostsResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnity_GetPostsByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsByDate" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_GetPostsByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsByDateResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnity_InsertPost_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertPost" />
   </wsdl:message>
@@ -150,6 +157,24 @@
   </wsdl:message>
   <wsdl:message name="IUnity_DeletePost_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_GetIamge_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIamge" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_GetIamge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIamgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_SaveImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImage" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_SaveImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_GetImagesByPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImagesByPost" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_GetImagesByPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImagesByPostResponse" />
   </wsdl:message>
   <wsdl:portType name="IUnity">
     <wsdl:operation name="GetAllUsers">
@@ -236,6 +261,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetAllPosts" message="tns:IUnity_GetAllPosts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/GetAllPostsResponse" message="tns:IUnity_GetAllPosts_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetPostsByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetPostsByDate" message="tns:IUnity_GetPostsByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/GetPostsByDateResponse" message="tns:IUnity_GetPostsByDate_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="InsertPost">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/InsertPost" message="tns:IUnity_InsertPost_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/InsertPostResponse" message="tns:IUnity_InsertPost_OutputMessage" />
@@ -247,6 +276,18 @@
     <wsdl:operation name="DeletePost">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/DeletePost" message="tns:IUnity_DeletePost_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/DeletePostResponse" message="tns:IUnity_DeletePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIamge">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetIamge" message="tns:IUnity_GetIamge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/GetIamgeResponse" message="tns:IUnity_GetIamge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/SaveImage" message="tns:IUnity_SaveImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/SaveImageResponse" message="tns:IUnity_SaveImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImagesByPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetImagesByPost" message="tns:IUnity_GetImagesByPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/GetImagesByPostResponse" message="tns:IUnity_GetImagesByPost_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUnity" type="tns:IUnity">
@@ -440,6 +481,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPostsByDate">
+      <soap:operation soapAction="http://tempuri.org/IUnity/GetPostsByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertPost">
       <soap:operation soapAction="http://tempuri.org/IUnity/InsertPost" style="document" />
       <wsdl:input>
@@ -460,6 +510,33 @@
     </wsdl:operation>
     <wsdl:operation name="DeletePost">
       <soap:operation soapAction="http://tempuri.org/IUnity/DeletePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIamge">
+      <soap:operation soapAction="http://tempuri.org/IUnity/GetIamge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImage">
+      <soap:operation soapAction="http://tempuri.org/IUnity/SaveImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagesByPost">
+      <soap:operation soapAction="http://tempuri.org/IUnity/GetImagesByPost" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

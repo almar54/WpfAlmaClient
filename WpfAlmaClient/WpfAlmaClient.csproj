@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -85,6 +86,10 @@
     </Compile>
     <Compile Include="CreatePostwnd.xaml.cs">
       <DependentUpon>CreatePostwnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImageManager.cs" />
+    <Compile Include="PostFlipUc.xaml.cs">
+      <DependentUpon>PostFlipUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Postwnd.xaml.cs">
       <DependentUpon>Postwnd.xaml</DependentUpon>
@@ -136,6 +141,9 @@
     <None Include="Connected Services\CrisisUnityService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\CrisisUnityService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\CrisisUnityService\UnityService.wsdl" />
     <None Include="Connected Services\CrisisUnityService\WpfAlmaClient.CrisisUnityService.CategoryList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -182,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PostFlipUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +255,7 @@
     <Resource Include="Images\Posts\TryPost\pants3.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Posts\5\" />
     <Folder Include="Images\Posts\Post1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

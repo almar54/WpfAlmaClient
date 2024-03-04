@@ -583,6 +583,12 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllPosts", ReplyAction="http://tempuri.org/IUnity/GetAllPostsResponse")]
         System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.PostList> GetAllPostsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetPostsByDate", ReplyAction="http://tempuri.org/IUnity/GetPostsByDateResponse")]
+        WpfAlmaClient.CrisisUnityService.PostList GetPostsByDate(System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetPostsByDate", ReplyAction="http://tempuri.org/IUnity/GetPostsByDateResponse")]
+        System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.PostList> GetPostsByDateAsync(System.DateTime date);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/InsertPost", ReplyAction="http://tempuri.org/IUnity/InsertPostResponse")]
         int InsertPost(WpfAlmaClient.CrisisUnityService.Post post);
         
@@ -600,6 +606,24 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/DeletePost", ReplyAction="http://tempuri.org/IUnity/DeletePostResponse")]
         System.Threading.Tasks.Task<int> DeletePostAsync(WpfAlmaClient.CrisisUnityService.Post post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetIamge", ReplyAction="http://tempuri.org/IUnity/GetIamgeResponse")]
+        byte[] GetIamge(string fileName, string post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetIamge", ReplyAction="http://tempuri.org/IUnity/GetIamgeResponse")]
+        System.Threading.Tasks.Task<byte[]> GetIamgeAsync(string fileName, string post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/SaveImage", ReplyAction="http://tempuri.org/IUnity/SaveImageResponse")]
+        void SaveImage(byte[] imageArray, string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/SaveImage", ReplyAction="http://tempuri.org/IUnity/SaveImageResponse")]
+        System.Threading.Tasks.Task SaveImageAsync(byte[] imageArray, string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetImagesByPost", ReplyAction="http://tempuri.org/IUnity/GetImagesByPostResponse")]
+        string[] GetImagesByPost(string post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetImagesByPost", ReplyAction="http://tempuri.org/IUnity/GetImagesByPostResponse")]
+        System.Threading.Tasks.Task<string[]> GetImagesByPostAsync(string post);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -797,6 +821,14 @@ namespace WpfAlmaClient.CrisisUnityService {
             return base.Channel.GetAllPostsAsync();
         }
         
+        public WpfAlmaClient.CrisisUnityService.PostList GetPostsByDate(System.DateTime date) {
+            return base.Channel.GetPostsByDate(date);
+        }
+        
+        public System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.PostList> GetPostsByDateAsync(System.DateTime date) {
+            return base.Channel.GetPostsByDateAsync(date);
+        }
+        
         public int InsertPost(WpfAlmaClient.CrisisUnityService.Post post) {
             return base.Channel.InsertPost(post);
         }
@@ -819,6 +851,30 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         public System.Threading.Tasks.Task<int> DeletePostAsync(WpfAlmaClient.CrisisUnityService.Post post) {
             return base.Channel.DeletePostAsync(post);
+        }
+        
+        public byte[] GetIamge(string fileName, string post) {
+            return base.Channel.GetIamge(fileName, post);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> GetIamgeAsync(string fileName, string post) {
+            return base.Channel.GetIamgeAsync(fileName, post);
+        }
+        
+        public void SaveImage(byte[] imageArray, string fileName) {
+            base.Channel.SaveImage(imageArray, fileName);
+        }
+        
+        public System.Threading.Tasks.Task SaveImageAsync(byte[] imageArray, string fileName) {
+            return base.Channel.SaveImageAsync(imageArray, fileName);
+        }
+        
+        public string[] GetImagesByPost(string post) {
+            return base.Channel.GetImagesByPost(post);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetImagesByPostAsync(string post) {
+            return base.Channel.GetImagesByPostAsync(post);
         }
     }
 }

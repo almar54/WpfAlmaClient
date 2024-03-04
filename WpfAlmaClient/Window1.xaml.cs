@@ -23,12 +23,15 @@ namespace WpfAlmaClient
         public Window1()
         {
             InitializeComponent();
+            ImageManager.ImageDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\") + @"\Images\Posts\");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User { ID = 1 };
+            UnityClient x = new UnityClient();
+            User user = x.Login(new User { UserName = "alma22", Password = "Alma22#" });
             Homewnd homewnd = new Homewnd(user);
+            this.Close();
             homewnd.ShowDialog();
         }
     }

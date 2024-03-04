@@ -22,11 +22,12 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="686141bc-e7f9-4ce1-b00f-1eaaa673844f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="19c487d1-211e-419e-ae8d-286d5ab186ed" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?disco" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="720e2a9d-8850-454d-9848-0b85dbfa9089" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd3" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="951f00c8-26ea-402a-8640-f3d17b21344d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd0" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="0cb89670-e008-4e59-92f1-479a35e11907" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd1" />
     <MetadataFile FileName="UnityService.wsdl" MetadataType="Wsdl" ID="ffbdeeb7-c735-46ac-be35-d8bb292b9201" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="951f00c8-26ea-402a-8640-f3d17b21344d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="19c487d1-211e-419e-ae8d-286d5ab186ed" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?disco" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="686141bc-e7f9-4ce1-b00f-1eaaa673844f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServiceModel/UnityService/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
