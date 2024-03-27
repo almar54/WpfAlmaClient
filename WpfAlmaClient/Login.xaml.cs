@@ -27,8 +27,7 @@ namespace WpfAlmaClient
         public Loginwnd()
         {
             InitializeComponent();
-            ImageManager.ImageDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\") + @"\images\");
-            client = new UnityClient();
+            ImageManager.ImageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Posts");
             userNameOk = passOk = false;
         }
 

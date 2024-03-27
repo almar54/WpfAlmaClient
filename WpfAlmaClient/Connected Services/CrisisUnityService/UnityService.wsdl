@@ -158,6 +158,12 @@
   <wsdl:message name="IUnity_DeletePost_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePostResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnity_GetPostsByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_GetPostsByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsByUserIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnity_GetIamge_InputMessage">
     <wsdl:part name="parameters" element="tns:GetIamge" />
   </wsdl:message>
@@ -276,6 +282,10 @@
     <wsdl:operation name="DeletePost">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/DeletePost" message="tns:IUnity_DeletePost_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/DeletePostResponse" message="tns:IUnity_DeletePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostsByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetPostsByUserId" message="tns:IUnity_GetPostsByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/GetPostsByUserIdResponse" message="tns:IUnity_GetPostsByUserId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetIamge">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetIamge" message="tns:IUnity_GetIamge_InputMessage" />
@@ -510,6 +520,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeletePost">
       <soap:operation soapAction="http://tempuri.org/IUnity/DeletePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostsByUserId">
+      <soap:operation soapAction="http://tempuri.org/IUnity/GetPostsByUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

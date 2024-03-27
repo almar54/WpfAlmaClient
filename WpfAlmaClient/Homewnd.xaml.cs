@@ -60,6 +60,7 @@ namespace WpfAlmaClient
             foreach (Post p in posts)
             {
                 PostFlipUc postFlipUc = new PostFlipUc(p);
+                postFlipUc.Margin = new Thickness(5);
                 wpPosts.Children.Add(postFlipUc);
             }
         }
@@ -97,5 +98,28 @@ namespace WpfAlmaClient
             CheckBox checkBox = sender as CheckBox;
             Category category = checkBox.Tag as Category;
         }
+
+        private void Post_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Postwnd postwnd = new Postwnd();
+            this.Close();
+            postwnd.ShowDialog();
+        }
+
+        private void Category_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Categorywnd categorywnd = new Categorywnd();
+            this.Close();
+            categorywnd.ShowDialog();
+        }
+
+        private void Event_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Eventwnd eventwnd = new Eventwnd();
+            this.Close();
+            eventwnd.ShowDialog();
+        }
+
+        
     }
 }

@@ -607,6 +607,12 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/DeletePost", ReplyAction="http://tempuri.org/IUnity/DeletePostResponse")]
         System.Threading.Tasks.Task<int> DeletePostAsync(WpfAlmaClient.CrisisUnityService.Post post);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetPostsByUserId", ReplyAction="http://tempuri.org/IUnity/GetPostsByUserIdResponse")]
+        WpfAlmaClient.CrisisUnityService.PostList GetPostsByUserId(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetPostsByUserId", ReplyAction="http://tempuri.org/IUnity/GetPostsByUserIdResponse")]
+        System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.PostList> GetPostsByUserIdAsync(int userId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetIamge", ReplyAction="http://tempuri.org/IUnity/GetIamgeResponse")]
         byte[] GetIamge(string fileName, string post);
         
@@ -851,6 +857,14 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         public System.Threading.Tasks.Task<int> DeletePostAsync(WpfAlmaClient.CrisisUnityService.Post post) {
             return base.Channel.DeletePostAsync(post);
+        }
+        
+        public WpfAlmaClient.CrisisUnityService.PostList GetPostsByUserId(int userId) {
+            return base.Channel.GetPostsByUserId(userId);
+        }
+        
+        public System.Threading.Tasks.Task<WpfAlmaClient.CrisisUnityService.PostList> GetPostsByUserIdAsync(int userId) {
+            return base.Channel.GetPostsByUserIdAsync(userId);
         }
         
         public byte[] GetIamge(string fileName, string post) {

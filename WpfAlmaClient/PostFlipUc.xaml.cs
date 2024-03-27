@@ -31,11 +31,20 @@ namespace WpfAlmaClient
             postTitle.Text = post.Title;
             postDes.Text = post.Description;
             images = ImageManager.GetAllPostImages(post);
+            if (post.User.PhoneNum == null)
+            {
+                contactTxt.Text = "No contact details found";
+            }
+            else
+            {
+                contactTxt.Text += post.User.PhoneNum;
+            }
             LoadImages();
         }
 
         private void LoadImages()
         {
+            if (images == null) return;
             foreach(string file in images)
             {
                 try
@@ -43,6 +52,8 @@ namespace WpfAlmaClient
                     Image image = new Image();
                     image.Source = new BitmapImage(new Uri(file));
                     image.Margin = new Thickness(4);
+                    image.Width = 30;
+                    image.Height = 30;
                     imageGrid.Children.Add(image);
                 }
                 catch (Exception ex)

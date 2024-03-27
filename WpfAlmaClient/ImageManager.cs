@@ -16,20 +16,23 @@ namespace WpfAlmaClient
         public static string ImageDirectory { get => imageDirectory; set => imageDirectory = value; }
         public static string[] GetAllPostImages(Post post)
         {
-            DirectoryInfo directory = new DirectoryInfo(imageDirectory + post.ID + "\\");
-            FileInfo[] files = directory.GetFiles("*.*");
+            List<string> localImage = new List<string>();
+            string[] serviceImages = null;
+            string localFolder = System.IO.Path.Combine(imageDirectory, post.ID.ToString());
+            if (Directory.Exists(localFolder))
+                localImage = Directory.GetFiles(localFolder).ToList();
             UnityClient service = new UnityClient();
-            string[] serviceImages = service.GetImagesByPost(post.ID.ToString());
-            List<string> clientImages = files.Select(file => file.Name).ToList();
+            serviceImages = service.GetImagesByPost(post.ID.ToString());
+            if (serviceImages == null) return null;
             foreach (string file in serviceImages)
             {
-                if (!clientImages.Contains(file))
+                if (localImage.Find(img=>img.Contains(file))==null)
                 {
                     string path = GetImageFromService(file, post);
-                    clientImages.Add(path);
+                    localImage.Add(path);
                 }
             }
-            return clientImages.ToArray();
+            return localImage.ToArray();
         }
 
         public static string GetImageFromService(string file, Post post)
@@ -39,22 +42,20 @@ namespace WpfAlmaClient
             MemoryStream stream = new MemoryStream(imageArray);
             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
 
-            string localFilePath = Environment.CurrentDirectory.Substring(0,Environment.CurrentDirectory.Length-10)+@"\Images\Posts\"+ post.ID+"\\";
-            localFilePath += file;
+            Directory.CreateDirectory(System.IO.Path.Combine(imageDirectory, post.ID.ToString()));
+            string localFilePath = System.IO.Path.Combine(imageDirectory, post.ID.ToString(), file);
             image.Save(localFilePath);
-            return localFilePath + file;
+            return localFilePath;
         }
 
-        public static string Image_Dialog()
+        public static string[] Image_Dialog()
         {
-
-            string filename = null;
             // Create OpenFileDialog 
             OpenFileDialog dlg = new OpenFileDialog();
 
             // Set filter for file extension and default file extension 
-            dlg.Filter = "All Images | *.jpg;*.jpeg;*.tif;*.tiff;*.bmp;*.png|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-
+            dlg.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif)|*.jpg; *.jpeg; *.png; *.gif";
+            dlg.Multiselect = true;
             // Display OpenFileDialog by calling ShowDialog method 
             Nullable<bool> result = dlg.ShowDialog();
 
@@ -62,24 +63,16 @@ namespace WpfAlmaClient
             if (result == true)
             {
                 // Open document 
-                filename = dlg.FileName;
-                filename = SaveImageToClient(filename); // save the Picture in LocalFolder
-                                                        // (if not exist) rns return only the file name
+                return dlg.FileNames;
             }
-            return filename;
+            return null;
         }
-        public static string SaveImageToClient(string sourcefileName)
+        public static string SaveImageToClient(string sourcefileName,string folderName)
         {
+            Directory.CreateDirectory(System.IO.Path.Combine(imageDirectory, folderName));
             string fileName = System.IO.Path.GetFileName(sourcefileName);
-            string localFilePath = System.IO.Path.Combine(imageDirectory, fileName);
-            if (!File.Exists(localFilePath))
-            {
-                byte[] imgArray = File.ReadAllBytes(sourcefileName);
-                var stream = new MemoryStream(imgArray);
-                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
-
-                img.Save(localFilePath);
-            }
+            string localFilePath = System.IO.Path.Combine(imageDirectory, folderName, fileName);
+            System.IO.File.Copy(sourcefileName, localFilePath, true);
             return fileName;
         }
         public static void SendImageToService(string image)

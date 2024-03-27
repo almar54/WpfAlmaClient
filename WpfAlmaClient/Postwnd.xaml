@@ -4,51 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAlmaClient"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Postwnd"
-        Height="450"
-        Width="800">
+        d:DesignHeight="600"
+        d:DesignWidth="800"
+        Background="#e1f5fe">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition MinHeight="100"
-                           MaxHeight="300" />
-            <RowDefinition Height="160" />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="0">
-            <TextBlock Text="Title" />
-            <TextBlock Text=" By alma22" />
-            <TextBlock Text=" Category: Clothes" />
-        </WrapPanel>
-        <TextBlock Grid.Row="1"
-                   Text="description" />
-        <WrapPanel Grid.Row="2"
-                   x:Name="photoWrapPanel"
-                   Orientation="Horizontal">
-            <Image Source="/Images/Posts/Post1/hoodie1.jpg"
-                   Width="150"
-                   Height="150"
-                   Margin="5" />
-            <Image Source="/Images/Posts/Post1/shirt1.jpg"
-                   Width="150"
-                   Height="150"
-                   Margin="5" />
-            <Image Source="/Images/Posts/Post1/shirt2.jpg"
-                   Width="150"
-                   Height="150"
-                   Margin="5" />
-            <Image Source="/Images/Posts/Post1/hoodie2.jpg"
-                   Width="150"
-                   Height="150"
-                   Margin="5" />
-            <Image Source="/Images/Posts/Post1/pants2.jpg"
-                   Width="150"
-                   Height="150"
-                   Margin="5" />
-            <Image Source="/Images/Posts/Post1/pants3.jpg"
-                   Width="150"
-                   Height="150"
-                   Margin="5" />
-        </WrapPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="0">
+            <materialDesign:PackIcon Kind="Home"
+                                     Height="40"
+                                     Width="40"
+                                     Margin="5"
+                                     x:Name="homeDr"
+                                     VerticalAlignment="Center"
+                                     MouseLeftButtonUp="homeDr_MouseLeftButtonUp"
+                                     />
+            <materialDesign:PackIcon Kind="BookmarkPlusOutline"
+                                     Height="40"
+                                     Width="40"
+                                     Margin="5"
+                                     x:Name="categoryDr"
+                                     MouseLeftButtonUp="categoryDr_MouseLeftButtonUp"
+                                     VerticalAlignment="Center" />
+            <materialDesign:PackIcon Kind="CalendarPlus"
+                                     Height="40"
+                                     Width="40"
+                                     x:Name="eventDr"
+                                     VerticalAlignment="Center"
+                                     MouseLeftButtonUp="eventDr_MouseLeftButtonUp"
+                                     Margin="5"/>
+
+        </StackPanel>
+        <!--my posts-->
+        <!--create new post-->
     </Grid>
 </Window>

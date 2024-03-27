@@ -73,6 +73,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Categorywnd.xaml.cs">
+      <DependentUpon>Categorywnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\CrisisUnityService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +89,9 @@
     </Compile>
     <Compile Include="CreatePostwnd.xaml.cs">
       <DependentUpon>CreatePostwnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Eventwnd.xaml.cs">
+      <DependentUpon>Eventwnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageManager.cs" />
     <Compile Include="PostFlipUc.xaml.cs">
@@ -173,6 +179,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Categorywnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateCategorywnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreatePostwnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Eventwnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,22 +256,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Posts\TryPost\hoodie2.jpg" />
-    <Resource Include="Images\Posts\TryPost\shirt1.jpg" />
-    <Resource Include="Images\Posts\TryPost\shirt2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Posts\TryPost\hoodie1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Posts\TryPost\pants2.jpg" />
-    <Resource Include="Images\Posts\TryPost\pants3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\Posts\5\" />
-    <Folder Include="Images\Posts\Post1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

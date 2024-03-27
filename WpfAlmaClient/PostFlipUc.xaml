@@ -11,11 +11,13 @@
     <Grid>
         <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
                     materialDesign:ThemeAssist.Theme="Light">
-            <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+            <TabItem Height="40"
+                     Width="40"
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <TabItem.Header>
                     <materialDesign:PackIcon Kind="Home"
-                                             Width="24"
-                                             Height="24" />
+                                             Width="20"
+                                             Height="20" />
                 </TabItem.Header>
                 <TextBlock Padding="5"
                            TextWrapping="Wrap">
@@ -28,11 +30,13 @@
                     x:Name="postDes">
     </Run></TextBlock>
             </TabItem>
-            <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+            <TabItem Height="40"
+                     Width="40"
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <TabItem.Header>
                     <materialDesign:PackIcon Kind="Image"
-                                             Width="24"
-                                             Height="24" />
+                                             Width="20"
+                                             Height="20" />
                 </TabItem.Header>
                 <StackPanel>
                     <TextBlock Padding="5"
@@ -42,15 +46,18 @@
                     <UniformGrid x:Name="imageGrid" />
                 </StackPanel>
             </TabItem>
-            <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+            <TabItem Height="40"
+                     Width="40"
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <TabItem.Header>
-                    <materialDesign:PackIcon Kind="CommentProcessing"
-                                             Width="24"
-                                             Height="24" />
+                    <materialDesign:PackIcon Kind="Phone"
+                                             Width="20"
+                                             Height="20" />
                 </TabItem.Header>
                 <TextBlock Padding="5"
                            TextWrapping="Wrap">
-      <Run Text="comments... " />
+      <Run Text="Contact info: "
+                    x:Name="contactTxt" />
       <LineBreak />
       <LineBreak />
       <Run FontStyle="Italic">

@@ -23,7 +23,7 @@ namespace WpfAlmaClient
         public Window1()
         {
             InitializeComponent();
-            ImageManager.ImageDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\") + @"\Images\Posts\");
+            ImageManager.ImageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Posts");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

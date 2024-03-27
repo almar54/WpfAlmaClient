@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAlmaClient.CrisisUnityService;
+using System.IO;
 
 namespace WpfAlmaClient
 {
@@ -22,6 +23,7 @@ namespace WpfAlmaClient
     public partial class CreatePostwnd : Window
     {
         private UnityClient myService;
+        private List<string> files;
         private Post post;
         private User user;
         public CreatePostwnd(User user)
@@ -31,6 +33,7 @@ namespace WpfAlmaClient
             this.user = user;
             post = new Post();
             this.DataContext = post;
+            files = new List<string>();
             cbxCities.ItemsSource = myService.GetAllCities();
             cbxCities.DisplayMemberPath = "Name";
             cbxEvent.ItemsSource = myService.GetAllEvents();
@@ -72,6 +75,10 @@ namespace WpfAlmaClient
             post.Event = cbxEvent.SelectedItem as Event;
             post.PostDate = (DateTime)DPpostDate.SelectedDate;
             post.PostTime = (DateTime)TPpostTime.SelectedTime;
+            if (!(bool)contactTgl.IsChecked)
+            {
+                post.User.PhoneNum = null;
+            }
             int id = myService.InsertPost(post);
             if (id==-1)
             {
@@ -79,7 +86,35 @@ namespace WpfAlmaClient
                 return;
             }
             //יצירת תיקייה
+            post.ID = id;
+            string folderName = id.ToString();
+            //string postsDirectoryPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Posts");
+            try
+            {
+                //if (!Directory.Exists(postsDirectoryPath))
+                //        Directory.CreateDirectory(postsDirectoryPath);
+
+                //    postsDirectoryPath = System.IO.Path.Combine(postsDirectoryPath, folderName);
+
+                //    if (!Directory.Exists(postsDirectoryPath))
+                //        Directory.CreateDirectory(postsDirectoryPath);
+
+                //move files to new folder
+                foreach (string file in files)
+                {
+                    //string name = file.Substring(file.LastIndexOf(@"\"));
+                    //System.IO.File.Copy(file, postsDirectoryPath + name, true);
+                    string name = ImageManager.SaveImageToClient(file, folderName);
+                    ImageManager.SendImageToService(folderName+"\\"+name);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             //שמירת כל התמונות בתיקייה נוכחית
+
             //שמירת כל התמונות בשירות
             MessageBox.Show("All good! lets go!", "Thank You!", MessageBoxButton.OK);
             Userwnd userwnd = new Userwnd(user);
@@ -90,39 +125,34 @@ namespace WpfAlmaClient
 
         private void AddPhotoButton_Click(object sender, RoutedEventArgs e)
         {
-            string destinationFolder = @"C:\Users\User\source\repos\WpfAlmaClient\WpfAlmaClient\Images\Posts\Post1\";
+            string[] images = ImageManager.Image_Dialog();
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif)|*.jpg; *.jpeg; *.png; *.gif";
-            openFileDialog.Multiselect = true;
-
-
-            if (openFileDialog.ShowDialog() == true)
+            if (images.Length>0)
             {
                 try
                 {
-                    foreach (string selectedFileName in openFileDialog.FileNames)
+                    foreach (string selectedFileName in images)
                     {
-                        // Construct the destination file path by combining the destination folder and the selected file name
-                        string destinationPath = System.IO.Path.Combine(destinationFolder, System.IO.Path.GetFileName(selectedFileName));
-
-                        // Copy the selected image file to the destination folder
-                        System.IO.File.Copy(selectedFileName, destinationPath, true);
-
                         // Load and display the saved image
-                        BitmapImage bitmapImage = new BitmapImage(new Uri(destinationPath));
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.UriSource = new Uri(selectedFileName);
+                        bitmapImage.EndInit();
 
                         // Create a new Image control to display the selected image
                         Image imageControl = new Image();
                         imageControl.Source = bitmapImage;
                         imageControl.Width = 80; 
                         imageControl.Height = 80;
+                        imageControl.Tag = selectedFileName;
+                        imageControl.MouseLeftButtonDown += RemoveImage_MouseLeftButtonDown; 
 
                         // Set some margin to separate images
                         imageControl.Margin = new Thickness(5);
                         imagesContainer.Children.Add(imageControl);
-
+                        files.Add(selectedFileName);
                     }
+                    
 
                 }
                 catch (Exception ex)
@@ -132,5 +162,12 @@ namespace WpfAlmaClient
             }
         }
 
+        private void RemoveImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Image imageControl = sender as Image;
+            string file = imageControl.Tag.ToString();
+            files.Remove(file);
+            imagesContainer.Children.Remove(imageControl);
+        }
     }
 }

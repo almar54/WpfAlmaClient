@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
@@ -19,9 +20,31 @@ namespace WpfAlmaClient
     /// </summary>
     public partial class Postwnd : Window
     {
-        public Postwnd()
+        private PostList posts;
+        private User user;
+        private UnityClient myService;
+        public Postwnd(User user)
         {
+            this.user = user;
+            this.posts = myService.GetPostsByUserId(user.ID);
             InitializeComponent();
+        }
+
+        private void homeDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Homewnd homewnd = new Homewnd(user);
+            this.Close();
+            homewnd.ShowDialog();
+        }
+
+        private void categoryDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void eventDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
