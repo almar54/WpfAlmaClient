@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAlmaClient.CrisisUnityService;
 
 namespace WpfAlmaClient
 {
@@ -19,7 +20,7 @@ namespace WpfAlmaClient
     /// </summary>
     public partial class Categorywnd : Window
     {
-        public Categorywnd()
+        public Categorywnd(User user )
         {
             InitializeComponent();
         }

@@ -26,8 +26,27 @@ namespace WpfAlmaClient
         public Postwnd(User user)
         {
             this.user = user;
+            this.myService = new UnityClient();
             this.posts = myService.GetPostsByUserId(user.ID);
+            AddPostCard();
             InitializeComponent();
+        }
+        private void AddPostCard()
+        {
+            if (posts.Count > 0)
+            {
+                tb1.Text += user.UserName.ToString();
+                foreach (Post p in posts)
+                {
+                    PostFlipUc postFlipUc = new PostFlipUc(p);
+                    postFlipUc.Margin = new Thickness(5);
+                    wpPosts.Children.Add(postFlipUc);
+                }
+            }
+            else
+            {
+                tb1.Text = "You have no posts, let's create a new one!";
+            }
         }
 
         private void homeDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -39,12 +58,22 @@ namespace WpfAlmaClient
 
         private void categoryDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            Categorywnd categorywnd = new Categorywnd(user);
+            this.Close();
+            categorywnd.ShowDialog();
         }
 
         private void eventDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            Eventwnd eventwnd = new Eventwnd(user);
+            this.Close();
+            eventwnd.ShowDialog();
+        }
 
+        private void newPostbtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePostwnd createPostwnd = new CreatePostwnd(user);
+            createPostwnd.ShowDialog();
         }
     }
 }

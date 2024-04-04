@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAlmaClient"
         mc:Ignorable="d"
-        Title="Userwnd" Height="450" Width="800">
+        Title="Userwnd"
+        d:DesignHeight="600"
+        d:DesignWidth="800"
+        Background="#e1f5fe">
     <Grid>
         
     </Grid>

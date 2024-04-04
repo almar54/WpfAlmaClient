@@ -102,7 +102,8 @@
                     <ListViewItem Height="45"
                                   Padding="0">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="10 0" MouseLeftButtonUp="Post_MouseLeftButtonUp">
+                                    Margin="10 0"
+                                    MouseLeftButtonUp="Post_MouseLeftButtonUp">
                             <materialDesign:PackIcon Kind="PlusBoxOutline"
                                                      Width="20"
                                                      Height="20"
@@ -116,7 +117,8 @@
                     <ListViewItem Height="45"
                                   Padding="0">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="10 0" MouseLeftButtonUp="Category_MouseLeftButtonUp">
+                                    Margin="10 0"
+                                    MouseLeftButtonUp="Category_MouseLeftButtonUp">
                             <materialDesign:PackIcon Kind="BookmarkPlusOutline"
                                                      Width="20"
                                                      Height="20"
@@ -130,7 +132,8 @@
                     <ListViewItem Height="45"
                                   Padding="0">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="10 0" MouseLeftButtonUp="Event_MouseLeftButtonUp">
+                                    Margin="10 0"
+                                    MouseLeftButtonUp="Event_MouseLeftButtonUp">
                             <materialDesign:PackIcon Kind="CalendarPlus"
                                                      Width="20"
                                                      Height="20"
@@ -162,43 +165,54 @@
                 <RowDefinition Height="50" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <DockPanel Height="50"
-                       VerticalAlignment="Top">
-                <TextBlock Grid.Row="0"
-                           x:Name="tbUserName"
-                           Text="Welcome User!"
-                           DockPanel.Dock="Left"
-                           Margin="0 7 0 0" />
-                <materialDesign:PackIcon Kind="AccountCircleOutline"
-                                         Height="35"
-                                         Width="35"
-                                         DockPanel.Dock="Right"
-                                         Foreground="Black" />
-                <TextBlock />
-            </DockPanel>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="190" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Latest Posts:"
-                           Grid.Row="0"
-                           FontSize="20"
-                           FontWeight="Bold" />
-                <StackPanel Panel.ZIndex="1"
-                            Grid.Column="1"
-                            Grid.RowSpan="3"
-                            Margin="0 -60 0 0"
-                            x:Name="spExpanders"
-                            Height="300"></StackPanel>
-                <WrapPanel Grid.Column="0"
-                           Grid.Row="1"
-                           x:Name="wpPosts"></WrapPanel>
-            </Grid>
+            <!--<ScrollViewer Padding="15"
+                          x:Name="myScrollViewer"
+                          VerticalScrollBarVisibility="Auto"
+                          Foreground="Black">
+                <WrapPanel x:Name="panel"
+                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                           HorizontalAlignment="Center" />
+                
+            </ScrollViewer>-->
+                    <DockPanel Height="50"
+                               VerticalAlignment="Top">
+                        <TextBlock Grid.Row="0"
+                                   x:Name="tbUserName"
+                                   Text="Welcome User!"
+                                   DockPanel.Dock="Left"
+                                   Margin="0 7 0 0" />
+                        <materialDesign:PackIcon Kind="AccountCircleOutline"
+                                                 Height="35"
+                                                 Width="35"
+                                                 x:Name="userIcon"
+                                                 DockPanel.Dock="Right"
+                                                 MouseLeftButtonUp="userIcon_MouseLeftButtonUp"
+                                                 Foreground="Black" />
+                        <TextBlock />
+                    </DockPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="190" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Latest Posts:"
+                                   Grid.Row="0"
+                                   FontSize="20"
+                                   FontWeight="Bold" />
+                        <StackPanel Panel.ZIndex="1"
+                                    Grid.Column="1"
+                                    Grid.RowSpan="3"
+                                    Margin="0 -60 0 0"
+                                    x:Name="spExpanders"
+                                    Height="300"></StackPanel>
+                        <WrapPanel Grid.Column="0"
+                                   Grid.Row="1"
+                                   x:Name="wpPosts"></WrapPanel>
+                    </Grid>
         </Grid>
     </Grid>
 </Window>

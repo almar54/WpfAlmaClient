@@ -26,6 +26,7 @@ namespace WpfAlmaClient
         private EventList events;
         private CategoryList categories;
         private PostList posts;
+        private List<CheckBox> eventsCheckBox;
         public Homewnd(User user)
         {
             InitializeComponent();
@@ -35,9 +36,11 @@ namespace WpfAlmaClient
             categories = unityService.GetAllCategories();
             events = unityService.GetAllEvents();
             tbUserName.Text = "Welcome! " + user.UserName;
+            eventsCheckBox = new List<CheckBox>();
             AddexCategory();
             AddexEvent();
-            AddPostCard();
+            LoadPostCard(posts);
+
         }
         private void AddexEvent()
         {
@@ -49,32 +52,13 @@ namespace WpfAlmaClient
                 CheckBox checkBox = new CheckBox();
                 checkBox.Content = e.Name;
                 checkBox.Tag = e;
-                checkBox.Checked += CheckBoxEvent_Checked;
+                checkBox.Checked += CheckBox_Checked;
+                checkBox.Unchecked += CheckBox_Checked;
                 items.Children.Add(checkBox);
+                eventsCheckBox.Add(checkBox);
             }
             expander.Content = items;
             spExpanders.Children.Add(expander);
-        }
-        private void AddPostCard()
-        {
-            foreach (Post p in posts)
-            {
-                PostFlipUc postFlipUc = new PostFlipUc(p);
-                postFlipUc.Margin = new Thickness(5);
-                wpPosts.Children.Add(postFlipUc);
-            }
-        }
-
-        private void CheckBoxEvent_Checked(object sender, RoutedEventArgs e)
-        {
-            CheckBox checkBox = sender as CheckBox;
-            Event mye = checkBox.Tag as Event;
-
-        }
-
-        private void ButtonOpen_Click(object sender, RoutedEventArgs e)
-        {
-
         }
         private void AddexCategory()
         {
@@ -86,40 +70,88 @@ namespace WpfAlmaClient
                 CheckBox checkBox = new CheckBox();
                 checkBox.Content = cat.Name;
                 checkBox.Tag = cat;
-                checkBox.Checked += CheckBoxCategory_Checked;
+                checkBox.Checked += CheckBox_Checked;
+                checkBox.Unchecked += CheckBox_Checked;
                 spExpander.Children.Add(checkBox);
+                eventsCheckBox.Add(checkBox);
             }
             exCategories.Content = spExpander;
             spExpanders.Children.Add(exCategories);
         }
-
-        private void CheckBoxCategory_Checked(object sender, RoutedEventArgs e)
+        private void LoadPostCard(PostList list)
         {
-            CheckBox checkBox = sender as CheckBox;
-            Category category = checkBox.Tag as Category;
+            foreach (Post p in list)
+            {
+                PostFlipUc postFlipUc = new PostFlipUc(p);
+                postFlipUc.Margin = new Thickness(5);
+                wpPosts.Children.Add(postFlipUc);
+            }
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            PostList viewposts = new PostList();
+            List<int> listEvent= new List<int>();
+            List<int> listCat= new List<int>();
+            foreach(CheckBox checkBox in eventsCheckBox)
+                if((bool)checkBox.IsChecked)
+                {
+                    if(checkBox.Tag is Event)
+                        listEvent.Add((checkBox.Tag as Event).ID);
+                    else
+                        listCat.Add((checkBox.Tag as Category).ID);
+                }    
+            wpPosts.Children.Clear();
+            if (listCat.Count == 0 && listEvent.Count == 0) {
+                LoadPostCard(posts);
+                return;
+            }
+            foreach (Post p in posts)
+            {
+                if (listEvent.Count == 0 && (listCat.Count != 0 && listCat.Find(i => i == p.Category.ID) != 0))
+                    viewposts.Add(p);
+                else
+                 if (listCat.Count == 0 && (listEvent.Count != 0 && listEvent.Find(i => i == p.Event.ID) != 0))
+                    viewposts.Add(p);
+                else
+                if (listEvent.Find(i => i == p.Event.ID) != 0 && listCat.Find(i => i == p.Category.ID) != 0)
+                {
+                    viewposts.Add(p);
+                }
+            }
+            LoadPostCard(viewposts);
+        }
+
+        private void ButtonOpen_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Post_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Postwnd postwnd = new Postwnd();
+            Postwnd postwnd = new Postwnd(user);
             this.Close();
             postwnd.ShowDialog();
         }
 
         private void Category_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Categorywnd categorywnd = new Categorywnd();
+            Categorywnd categorywnd = new Categorywnd(user);
             this.Close();
             categorywnd.ShowDialog();
         }
 
         private void Event_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Eventwnd eventwnd = new Eventwnd();
+            Eventwnd eventwnd = new Eventwnd(user);
             this.Close();
             eventwnd.ShowDialog();
         }
 
-        
+        private void userIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Userwnd userwnd = new Userwnd(user);
+            this.Close();
+            userwnd.ShowDialog();
+        }
     }
 }

@@ -13,7 +13,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -27,8 +26,7 @@
                                      Margin="5"
                                      x:Name="homeDr"
                                      VerticalAlignment="Center"
-                                     MouseLeftButtonUp="homeDr_MouseLeftButtonUp"
-                                     />
+                                     MouseLeftButtonUp="homeDr_MouseLeftButtonUp" />
             <materialDesign:PackIcon Kind="BookmarkPlusOutline"
                                      Height="40"
                                      Width="40"
@@ -42,10 +40,36 @@
                                      x:Name="eventDr"
                                      VerticalAlignment="Center"
                                      MouseLeftButtonUp="eventDr_MouseLeftButtonUp"
-                                     Margin="5"/>
-
+                                     Margin="5" />
         </StackPanel>
         <!--my posts-->
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1">
+            <TextBlock Text="My Posts:"
+                       FontSize="30"
+                       Margin="5"
+                       FontFamily="Ariel"
+                       FontWeight="SemiBold" />
+            <WrapPanel x:Name="wpPosts">
+                <TextBlock x:Name="tb1"
+                           FontFamily="Ariel"
+                           FontWeight="SemiBold"
+                           FontSize="20" Text="Posts created by: "/>
+            </WrapPanel>
+        </StackPanel>
         <!--create new post-->
+        <StackPanel Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="0 0 0 15">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    x:Name="newPostbtn"
+                    Click="newPostbtn_Click"
+                    ToolTip="MaterialDesignFlatButton"
+                    FontWeight="Bold"
+                    FontFamily="Ariel"
+                    FontSize="20">Create new post</Button>
+        </StackPanel>
     </Grid>
 </Window>

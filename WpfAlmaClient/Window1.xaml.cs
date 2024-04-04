@@ -29,7 +29,7 @@ namespace WpfAlmaClient
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             UnityClient x = new UnityClient();
-            User user = x.Login(new User { UserName = "alma22", Password = "Alma22#" });
+            User user = x.Login(new User { UserName = "alma22", Password = "Alma22#", PhoneNum = "0584942153" });
             Homewnd homewnd = new Homewnd(user);
             this.Close();
             homewnd.ShowDialog();

@@ -77,7 +77,7 @@ namespace WpfAlmaClient
             post.PostTime = (DateTime)TPpostTime.SelectedTime;
             if (!(bool)contactTgl.IsChecked)
             {
-                post.User.PhoneNum = null;
+                user.PhoneNum = null;
             }
             int id = myService.InsertPost(post);
             if (id==-1)
