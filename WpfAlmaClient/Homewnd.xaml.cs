@@ -126,7 +126,7 @@ namespace WpfAlmaClient
 
         }
 
-        private void Post_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void PostView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Postwnd postwnd = new Postwnd(user);
             this.Close();
@@ -152,6 +152,6 @@ namespace WpfAlmaClient
             Userwnd userwnd = new Userwnd(user);
             this.Close();
             userwnd.ShowDialog();
-        }
+        }        
     }
 }

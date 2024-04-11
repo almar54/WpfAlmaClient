@@ -28,7 +28,7 @@ namespace WpfAlmaClient
         {
             InitializeComponent();
             this.post = post;
-            postTitle.Text = post.Title;
+            postTitle.Text = $"{post.Title} Event: {post.Event.Name} Category: {post.Category.Name}";
             postDes.Text = post.Description;
             images = ImageManager.GetAllPostImages(post);
             if (post.User.PhoneNum == null)

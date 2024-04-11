@@ -21,22 +21,22 @@
         <StackPanel Orientation="Vertical"
                     Grid.Column="0">
             <materialDesign:PackIcon Kind="Home"
-                                     Height="40"
-                                     Width="40"
+                                     Height="30"
+                                     Width="30"
                                      Margin="5"
                                      x:Name="homeDr"
                                      VerticalAlignment="Center"
                                      MouseLeftButtonUp="homeDr_MouseLeftButtonUp" />
             <materialDesign:PackIcon Kind="BookmarkPlusOutline"
-                                     Height="40"
-                                     Width="40"
+                                     Height="30"
+                                     Width="30"
                                      Margin="5"
                                      x:Name="categoryDr"
                                      MouseLeftButtonUp="categoryDr_MouseLeftButtonUp"
                                      VerticalAlignment="Center" />
             <materialDesign:PackIcon Kind="CalendarPlus"
-                                     Height="40"
-                                     Width="40"
+                                     Height="30"
+                                     Width="30"
                                      x:Name="eventDr"
                                      VerticalAlignment="Center"
                                      MouseLeftButtonUp="eventDr_MouseLeftButtonUp"
@@ -45,16 +45,17 @@
         <!--my posts-->
         <StackPanel Grid.Row="0"
                     Grid.Column="1">
-            <TextBlock Text="My Posts:"
-                       FontSize="30"
+            <TextBlock Text="Posts:"
+                       FontSize="20"
                        Margin="5"
                        FontFamily="Ariel"
                        FontWeight="SemiBold" />
+            <TextBlock x:Name="tb1"
+                       FontFamily="Ariel"
+                       FontWeight="SemiBold"
+                       FontSize="15"></TextBlock>
             <WrapPanel x:Name="wpPosts">
-                <TextBlock x:Name="tb1"
-                           FontFamily="Ariel"
-                           FontWeight="SemiBold"
-                           FontSize="20" Text="Posts created by: "/>
+               
             </WrapPanel>
         </StackPanel>
         <!--create new post-->
@@ -69,7 +70,7 @@
                     ToolTip="MaterialDesignFlatButton"
                     FontWeight="Bold"
                     FontFamily="Ariel"
-                    FontSize="20">Create new post</Button>
+                    FontSize="15">Create new post</Button>
         </StackPanel>
     </Grid>
 </Window>

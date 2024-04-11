@@ -25,17 +25,18 @@ namespace WpfAlmaClient
         private UnityClient myService;
         public Postwnd(User user)
         {
+            InitializeComponent();
             this.user = user;
             this.myService = new UnityClient();
             this.posts = myService.GetPostsByUserId(user.ID);
             AddPostCard();
-            InitializeComponent();
+            
         }
         private void AddPostCard()
         {
             if (posts.Count > 0)
             {
-                tb1.Text += user.UserName.ToString();
+                tb1.Text = $"Post created by: {user.UserName}";
                 foreach (Post p in posts)
                 {
                     PostFlipUc postFlipUc = new PostFlipUc(p);

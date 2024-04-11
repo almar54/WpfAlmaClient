@@ -20,9 +20,34 @@ namespace WpfAlmaClient
     /// </summary>
     public partial class Categorywnd : Window
     {
+        private User user;
+        private UnityClient myService;
         public Categorywnd(User user )
         {
             InitializeComponent();
+            this.user = user;
+            this.myService = new UnityClient();
+            tb1.Text += user.UserName;
+        }
+        private void PostView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Postwnd postwnd = new Postwnd(user);
+            this.Close();
+            postwnd.ShowDialog();
+        }
+
+        private void Home_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Homewnd homewnd = new Homewnd(user);
+            this.Close();
+            homewnd.ShowDialog();
+        }
+
+        private void Event_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Eventwnd eventwnd = new Eventwnd(user);
+            this.Close();
+            eventwnd.ShowDialog();
         }
     }
 }
