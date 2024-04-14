@@ -28,10 +28,10 @@ namespace WpfAlmaClient
         {
             InitializeComponent();
             this.post = post;
-            postTitle.Text = $"{post.Title} Event: {post.Event.Name} Category: {post.Category.Name}";
+            postTitle.Text = $"Title: {post.Title} | Event: {post.Event.Name} | Category: {post.Category.Name}";
             postDes.Text = post.Description;
             images = ImageManager.GetAllPostImages(post);
-            if (post.User.PhoneNum == null)
+            if (post.User.PhoneNum == "0000000000")
             {
                 contactTxt.Text = "No contact details found";
             }
@@ -44,7 +44,11 @@ namespace WpfAlmaClient
 
         private void LoadImages()
         {
-            if (images == null) return;
+            if (images == null)
+            {
+                imgtb.Text = "No images";
+                return; 
+            }
             foreach(string file in images)
             {
                 try

@@ -42,7 +42,7 @@
                     <TextBlock Padding="5"
                                TextWrapping="Wrap"
                                Text="Images..."
-                               FontStyle="Italic" />
+                               FontStyle="Italic" x:Name="imgtb"/>
                     <UniformGrid x:Name="imageGrid" />
                 </StackPanel>
             </TabItem>

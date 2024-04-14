@@ -22,12 +22,25 @@ namespace WpfAlmaClient
     {
         private User user;
         private UnityClient myService;
-        public Categorywnd(User user )
+        private CategoryList categories;
+        public Categorywnd(User user)
         {
             InitializeComponent();
             this.user = user;
             this.myService = new UnityClient();
             tb1.Text += user.UserName;
+            this.categories = myService.GetAllCategories();
+            LoadCategoryCard(categories);
+        }
+        private void LoadCategoryCard(CategoryList list)
+        {
+            foreach (Category c in list)
+            {
+                Categoryuc categoryuc = new Categoryuc(c);
+                categoryuc.Margin = new Thickness(5);
+                spCtg.Children.Add(categoryuc);
+
+            }
         }
         private void PostView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
