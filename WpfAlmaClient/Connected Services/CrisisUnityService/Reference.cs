@@ -547,6 +547,12 @@ namespace WpfAlmaClient.CrisisUnityService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/DeleteCity", ReplyAction="http://tempuri.org/IUnity/DeleteCityResponse")]
         System.Threading.Tasks.Task<int> DeleteCityAsync(WpfAlmaClient.CrisisUnityService.City city);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/UpdateCitiesFromExternalData", ReplyAction="http://tempuri.org/IUnity/UpdateCitiesFromExternalDataResponse")]
+        void UpdateCitiesFromExternalData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/UpdateCitiesFromExternalData", ReplyAction="http://tempuri.org/IUnity/UpdateCitiesFromExternalDataResponse")]
+        System.Threading.Tasks.Task UpdateCitiesFromExternalDataAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUnity/GetAllEvents", ReplyAction="http://tempuri.org/IUnity/GetAllEventsResponse")]
         WpfAlmaClient.CrisisUnityService.EventList GetAllEvents();
         
@@ -777,6 +783,14 @@ namespace WpfAlmaClient.CrisisUnityService {
         
         public System.Threading.Tasks.Task<int> DeleteCityAsync(WpfAlmaClient.CrisisUnityService.City city) {
             return base.Channel.DeleteCityAsync(city);
+        }
+        
+        public void UpdateCitiesFromExternalData() {
+            base.Channel.UpdateCitiesFromExternalData();
+        }
+        
+        public System.Threading.Tasks.Task UpdateCitiesFromExternalDataAsync() {
+            return base.Channel.UpdateCitiesFromExternalDataAsync();
         }
         
         public WpfAlmaClient.CrisisUnityService.EventList GetAllEvents() {

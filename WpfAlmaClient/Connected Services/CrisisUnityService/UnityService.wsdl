@@ -98,6 +98,12 @@
   <wsdl:message name="IUnity_DeleteCity_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCityResponse" />
   </wsdl:message>
+  <wsdl:message name="IUnity_UpdateCitiesFromExternalData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCitiesFromExternalData" />
+  </wsdl:message>
+  <wsdl:message name="IUnity_UpdateCitiesFromExternalData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCitiesFromExternalDataResponse" />
+  </wsdl:message>
   <wsdl:message name="IUnity_GetAllEvents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllEvents" />
   </wsdl:message>
@@ -242,6 +248,10 @@
     <wsdl:operation name="DeleteCity">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/DeleteCity" message="tns:IUnity_DeleteCity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUnity/DeleteCityResponse" message="tns:IUnity_DeleteCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCitiesFromExternalData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUnity/UpdateCitiesFromExternalData" message="tns:IUnity_UpdateCitiesFromExternalData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUnity/UpdateCitiesFromExternalDataResponse" message="tns:IUnity_UpdateCitiesFromExternalData_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllEvents">
       <wsdl:input wsaw:Action="http://tempuri.org/IUnity/GetAllEvents" message="tns:IUnity_GetAllEvents_InputMessage" />
@@ -430,6 +440,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteCity">
       <soap:operation soapAction="http://tempuri.org/IUnity/DeleteCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCitiesFromExternalData">
+      <soap:operation soapAction="http://tempuri.org/IUnity/UpdateCitiesFromExternalData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

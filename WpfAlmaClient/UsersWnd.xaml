@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpfAlmaClient.UsersWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAlmaClient"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="UsersWnd"
+        d:DesignHeight="600"
+        d:DesignWidth="1000"
+        Background="#e1f5fe">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <materialDesign:PackIcon Kind="Home"
+                                 Height="30"
+                                 Width="30"
+                                 Margin="5"
+                                 x:Name="homeDr"
+                                 VerticalAlignment="Top"
+                                 MouseLeftButtonUp="homeDr_MouseLeftButtonUp"
+                                 Grid.Column="0"/>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Hello Manager!" FontSize="30" FontWeight="SemiBold" Margin="5 0 0 0"/>
+            <ListView Width="1000" x:Name="usersLV">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding ID}"
+                                        Header="ID"
+                                        Width="50" />
+                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}"
+                                        Header="First Name"
+                                        Width="120" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LastName}"
+                                        Header="Last Name"
+                                        Width="120" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UserName}"
+                                        Header="User Name"
+                                        Width="120" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Password}"
+                                        Header="Password"
+                                        Width="120" />
+                        <GridViewColumn DisplayMemberBinding="{Binding City}"
+                                        Header="City"
+                                        Width="90" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Email}"
+                                        Header="Email"
+                                        Width="160" />
+                        <GridViewColumn DisplayMemberBinding="{Binding PhoneNum}"
+                                        Header="Phone Number"
+                                        Width="100" />
+                        <GridViewColumn Header="Is Manager?"
+                                        Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsManager}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
