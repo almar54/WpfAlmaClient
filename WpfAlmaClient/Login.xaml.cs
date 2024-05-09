@@ -23,12 +23,13 @@ namespace WpfAlmaClient
     {
         private User user;
         private bool userNameOk, passOk;
-        private UnityClient client;
+        private UnityClient myService;
         public Loginwnd()
         {
             InitializeComponent();
             ImageManager.ImageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Posts");
             userNameOk = passOk = false;
+            this.myService = new UnityClient();
         }
 
         private void GoToRegister(object sender, RoutedEventArgs e)
@@ -46,7 +47,7 @@ namespace WpfAlmaClient
                 return;
             }
             user = new User { UserName = tbUsername.Text, Password = pbPass.Password };
-            user = client.Login(user);
+            user = myService.Login(user);
             if (user == null)
             {
                 MessageBox.Show("No user detected");
