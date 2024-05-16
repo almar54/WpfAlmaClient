@@ -12,7 +12,7 @@
         Background="#e1f5fe">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <materialDesign:PackIcon Kind="Home"
@@ -22,47 +22,30 @@
                                  x:Name="homeDr"
                                  VerticalAlignment="Top"
                                  MouseLeftButtonUp="homeDr_MouseLeftButtonUp"
-                                 Grid.Column="0"/>
+                                 Grid.Column="0" />
         <StackPanel Grid.Column="1">
-            <TextBlock Text="Hello Manager!" FontSize="30" FontWeight="SemiBold" Margin="5 0 0 0"/>
-            <ListView Width="1000" x:Name="usersLV">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding ID}"
-                                        Header="ID"
-                                        Width="50" />
-                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}"
-                                        Header="First Name"
-                                        Width="120" />
-                        <GridViewColumn DisplayMemberBinding="{Binding LastName}"
-                                        Header="Last Name"
-                                        Width="120" />
-                        <GridViewColumn DisplayMemberBinding="{Binding UserName}"
-                                        Header="User Name"
-                                        Width="120" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Password}"
-                                        Header="Password"
-                                        Width="120" />
-                        <GridViewColumn DisplayMemberBinding="{Binding City}"
-                                        Header="City"
-                                        Width="90" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Email}"
-                                        Header="Email"
-                                        Width="160" />
-                        <GridViewColumn DisplayMemberBinding="{Binding PhoneNum}"
-                                        Header="Phone Number"
-                                        Width="100" />
-                        <GridViewColumn Header="Is Manager?"
-                                        Width="100">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsManager}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <TextBlock Text="Hello Manager!"
+                       FontSize="30"
+                       FontWeight="SemiBold"
+                       Margin="5 0 0 0" />
+            <StackPanel x:Name="spTable"
+                        MaxHeight="350"></StackPanel>
+            <Button Content="Update Cities"
+                    x:Name="updateCities"
+                    Click="updateCities_Click"
+                    HorizontalAlignment="Left"
+                    BorderBrush="LightGray"
+                    BorderThickness="1" />
+            <TextBox x:Name="userDel"
+                     materialDesign:HintAssist.Hint="Enter Username to delete"
+                     Margin="0 20 0 0"
+                     Width="auto" />
+            <Button x:Name="deleteUser"
+                    Content="Delete"
+                    Click="deleteUser_Click"
+                    HorizontalAlignment="Left"
+                    BorderThickness="1"
+                    BorderBrush="LightGray" />
         </StackPanel>
     </Grid>
 </Window>

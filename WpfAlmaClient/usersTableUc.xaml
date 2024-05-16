@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="WpfAlmaClient.usersTableUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAlmaClient"
+             mc:Ignorable="d"
+             d:DesignHeight="350"
+             d:DesignWidth="900"
+             Background="White">
+    <UserControl.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="BorderThickness"
+                    Value="1" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <ListView Width="900"
+                  Grid.Column="0"
+                  BorderBrush="Black"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  x:Name="usersLV">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="BorderBrush"
+                            Value="LightGray" />
+                    <Setter Property="BorderThickness"
+                            Value="0,0,0,2" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  Header="Name"
+                                     Width="180">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding FirstName}" />
+                                    <Run Text="{Binding LastName}" /></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Username"
+                                    Width="130"
+                                    DisplayMemberBinding="{Binding UserName}" />
+                    <GridViewColumn Header="City"
+                                    Width="90"
+                                    DisplayMemberBinding="{Binding City.Name}"/>
+                    <GridViewColumn Header="Email"
+                                    Width="200"
+                                    DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn Header="Phone Number"
+                                    Width="200"
+                                    DisplayMemberBinding="{Binding PhoneNum}" />
+                    <GridViewColumn Header="Is Admin"
+                                    Width="130">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsManager}"
+                                          Tag="{Binding}"
+                                          Checked="CheckBox_Checked"
+                                          Unchecked="CheckBox_Checked" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

@@ -22,14 +22,15 @@ namespace WpfAlmaClient
     {
         private User user;
         private UnityClient myService;
-        private List<User> users;
+
         public UsersWnd(User user)
         {
             InitializeComponent();
             this.user = user;
             myService = new UnityClient();
-            users = myService.GetAllUsers();
-            usersLV.ItemsSource = users;
+            usersTableUc tableUc = new usersTableUc();
+            spTable.Children.Add(tableUc);
+            
         }
 
         private void homeDr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -39,12 +40,12 @@ namespace WpfAlmaClient
             homewnd.ShowDialog();
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void updateCities_Click(object sender, RoutedEventArgs e)
         {
-
+            myService.UpdateCitiesFromExternalData();
         }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void deleteUser_Click(object sender, RoutedEventArgs e)
         {
 
         }

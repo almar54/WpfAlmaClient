@@ -109,6 +109,9 @@
     <Compile Include="Homewnd.xaml.cs">
       <DependentUpon>Homewnd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usersTableUc.xaml.cs">
+      <DependentUpon>usersTableUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UsersWnd.xaml.cs">
       <DependentUpon>UsersWnd.xaml</DependentUpon>
     </Compile>
@@ -230,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Homewnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usersTableUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
