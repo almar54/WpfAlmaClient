@@ -64,7 +64,8 @@ namespace WpfAlmaClient
 
         private void CreatePost_Click(object sender, RoutedEventArgs e)
         {
-            if (tbPTitle.Text.Equals(string.Empty) || tbDescription.Text.Equals(string.Empty) || cbxCities.SelectedItem == null)
+            if (tbPTitle.Text.Equals(string.Empty) || tbDescription.Text.Equals(string.Empty) 
+                || cbxCities.SelectedItem == null || cbxEvent.SelectedItem == null || cbxCategories.SelectedItem == null)
             {
                 MessageBox.Show("You must fill all of the fields!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -88,22 +89,10 @@ namespace WpfAlmaClient
             //יצירת תיקייה
             post.ID = id;
             string folderName = id.ToString();
-            //string postsDirectoryPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Posts");
             try
             {
-                //if (!Directory.Exists(postsDirectoryPath))
-                //        Directory.CreateDirectory(postsDirectoryPath);
-
-                //    postsDirectoryPath = System.IO.Path.Combine(postsDirectoryPath, folderName);
-
-                //    if (!Directory.Exists(postsDirectoryPath))
-                //        Directory.CreateDirectory(postsDirectoryPath);
-
-                //move files to new folder
                 foreach (string file in files)
                 {
-                    //string name = file.Substring(file.LastIndexOf(@"\"));
-                    //System.IO.File.Copy(file, postsDirectoryPath + name, true);
                     string name = ImageManager.SaveImageToClient(file, folderName);
                     ImageManager.SendImageToService(folderName+"\\"+name);
 
@@ -113,14 +102,10 @@ namespace WpfAlmaClient
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            //שמירת כל התמונות בתיקייה נוכחית
-
-            //שמירת כל התמונות בשירות
             MessageBox.Show("All good! lets go!", "Thank You!", MessageBoxButton.OK);
             Userwnd userwnd = new Userwnd(user);
             this.Close();
             userwnd.ShowDialog();
-
         }
 
         private void AddPhotoButton_Click(object sender, RoutedEventArgs e)

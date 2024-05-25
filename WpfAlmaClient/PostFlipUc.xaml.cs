@@ -28,7 +28,7 @@ namespace WpfAlmaClient
         {
             InitializeComponent();
             this.post = post;
-            postTitle.Text = $"Title: {post.Title} | Event: {post.Event.Name} | Category: {post.Category.Name}";
+            postTitle.Text = $"Title: {post.Title} | Event: {post.Event.Name} | Category: {post.Category.Name} | City: {post.City.Name}";
             postDes.Text = post.Description;
             images = ImageManager.GetAllPostImages(post);
             if (post.User.PhoneNum == "0000000000")

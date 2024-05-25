@@ -56,18 +56,16 @@ namespace WpfAlmaClient
             }
             if (user.IsManager)
             {
-                MessageBox.Show("Loginwnd Succesful");
-                MainWindow mw = new MainWindow(user);
-                mw.ShowDialog();
+                MessageBox.Show("Loginwnd manager Succesful");
             }
             else
             {
                 MessageBox.Show("Regular user login");
             }
             tbUsername.Text = pbPass.Password = string.Empty;
-            Userwnd userwnd = new Userwnd(user);
+            Homewnd homewnd = new Homewnd(user);
             this.Close();
-            userwnd.ShowDialog();
+            homewnd.ShowDialog();
         }
 
         private void tbUsername_TextChanged(object sender, TextChangedEventArgs e)

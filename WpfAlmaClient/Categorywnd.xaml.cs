@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace WpfAlmaClient
         private User user;
         private UnityClient myService;
         private CategoryList categories;
+        private TextBox catDel;
+        private Button del;
         public Categorywnd(User user)
         {
             InitializeComponent();
@@ -30,7 +33,10 @@ namespace WpfAlmaClient
             this.myService = new UnityClient();
             tb1.Text += user.UserName;
             this.categories = myService.GetAllCategories();
+            this.catDel = new TextBox();
+            this.del = new Button();
             LoadCategoryCard(categories);
+            AdminControls();
         }
         private void LoadCategoryCard(CategoryList list)
         {
@@ -61,6 +67,48 @@ namespace WpfAlmaClient
             Eventwnd eventwnd = new Eventwnd(user);
             this.Close();
             eventwnd.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreateCategorywnd create = new CreateCategorywnd(user);
+            create.ShowDialog();
+        }
+        private void AdminControls()
+        {
+            if (user.IsManager)
+            {
+                HintAssist.SetHelperText(catDel, "Enter category to delete");
+                catDel.Margin = new Thickness(5, 20, 0, 10);
+                catDel.Width = 250;
+                catDel.HorizontalAlignment = HorizontalAlignment.Left;
+                del.Content = "Delete";
+                del.Click += Del_Click;
+                del.FontFamily = new FontFamily("Aharoni");
+                del.FontSize = 20;
+                del.HorizontalAlignment = HorizontalAlignment.Left;
+                del.Foreground = Brushes.Gray;
+                del.Margin = new Thickness(10, 10, 10, 10);
+                spMain.Children.Add(catDel);
+                spMain.Children.Add(del);
+            }
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Category c in categories)
+            {
+                if (c.Name == catDel.Text)
+                {
+                    myService.DeleteCategory(c);
+                    categories = myService.GetAllCategories();
+                    catDel.Text = "";
+                    LoadCategoryCard(categories);
+                    return;
+                }
+            }
+            MessageBox.Show("Category doesnt exist.", "Error", MessageBoxButton.OK);
+            return;
         }
     }
 }

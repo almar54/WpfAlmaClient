@@ -42,7 +42,8 @@
                                      MouseLeftButtonUp="Event_MouseLeftButtonUp"
                                      Margin="5" />
         </StackPanel>
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1"
+                    x:Name="spMain">
             <TextBlock x:Name="tb1"
                        Text="Hello! "
                        FontSize="20"
@@ -55,6 +56,15 @@
                        FontFamily="Ariel"
                        FontWeight="SemiBold" />
             <StackPanel x:Name="spCtg"></StackPanel>
+            <Button Content="Add Category"
+                    FontFamily="Aharoni"
+                    FontSize="15"
+                    Foreground="LightGray"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Margin="0 5"
+                    Click="Button_Click"
+                    HorizontalAlignment="Right" />
+            
         </StackPanel>
     </Grid>
 </Window>

@@ -93,6 +93,9 @@
     <Compile Include="CreatePostwnd.xaml.cs">
       <DependentUpon>CreatePostwnd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EventsUc.xaml.cs">
+      <DependentUpon>EventsUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Eventwnd.xaml.cs">
       <DependentUpon>Eventwnd.xaml</DependentUpon>
     </Compile>
@@ -112,8 +115,8 @@
     <Compile Include="usersTableUc.xaml.cs">
       <DependentUpon>usersTableUc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UsersWnd.xaml.cs">
-      <DependentUpon>UsersWnd.xaml</DependentUpon>
+    <Compile Include="ManagerWnd.xaml.cs">
+      <DependentUpon>ManagerWnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Userwnd.xaml.cs">
       <DependentUpon>Userwnd.xaml</DependentUpon>
@@ -208,6 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EventsUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Eventwnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,7 +247,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UsersWnd.xaml">
+    <Page Include="ManagerWnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

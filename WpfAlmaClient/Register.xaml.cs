@@ -61,7 +61,7 @@ namespace WpfAlmaClient
             user.Password = pbPassword.Password;
             user.City = cbxCities.SelectedItem as City;
             user.IsManager = false;
-            if (myService.InsertUser(user)!=1)
+            if (myService.InsertUser(user) != 1)
             {
                 tbDialogText.Text = "Something Is Wrong";
                 dhErrors.IsOpen = true;
@@ -69,9 +69,9 @@ namespace WpfAlmaClient
             }
             tbDialogText.Text = "Thank you!";
             dhErrors.IsOpen = true;
-            Userwnd userwnd = new Userwnd(user);
+            Homewnd homewnd = new Homewnd(user);
             this.Close();
-            userwnd.ShowDialog();
+            homewnd.ShowDialog();
         }
         private bool CheckData()
         {
@@ -79,12 +79,14 @@ namespace WpfAlmaClient
             if (tbFirstName.Text.Equals(string.Empty)) return false;
             if (tbLastName.Text.Equals(string.Empty)) return false;
             if (tbPhone.Text.Equals(string.Empty)) return false;
+            if (tbEmail.Text.Equals(string.Empty)) return false;
             if (pbPassword.Password.Equals(string.Empty)) return false;
             if (pbRePassword.Password.Equals(string.Empty)) return false;
             if (Validation.GetHasError(tbUserName)) return false;
             if (Validation.GetHasError(tbFirstName)) return false;
             if (Validation.GetHasError(tbLastName)) return false;
             if (Validation.GetHasError(tbPhone)) return false;
+            if (Validation.GetHasError(tbEmail)) return false;
             if (cbxCities.SelectedIndex == -1) return false;
             if (!pass) return false;
             if (!rePass) return false;

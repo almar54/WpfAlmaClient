@@ -16,19 +16,24 @@ using WpfAlmaClient.CrisisUnityService;
 namespace WpfAlmaClient
 {
     /// <summary>
-    /// Interaction logic for UsersWnd.xaml
+    /// Interaction logic for ManagerWnd.xaml
     /// </summary>
-    public partial class UsersWnd : Window
+    public partial class ManagerWnd : Window
     {
         private User user;
         private UnityClient myService;
+        private UserList users;
+        private EventList events;
+        private usersTableUc tableUc;
 
-        public UsersWnd(User user)
+        public ManagerWnd(User user)
         {
             InitializeComponent();
             this.user = user;
             myService = new UnityClient();
-            usersTableUc tableUc = new usersTableUc();
+            this.users = myService.GetAllUsers();
+            this.events = myService.GetAllEvents();
+            this.tableUc = new usersTableUc();
             spTable.Children.Add(tableUc);
             
         }
@@ -47,7 +52,21 @@ namespace WpfAlmaClient
 
         private void deleteUser_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach (User u in users)
+            {
+                if (u.UserName == userDel.Text)
+                {
+                    myService.DeleteUser(u);
+                    users = myService.GetAllUsers();
+                    userDel.Text = "";
+                    tableUc.usersLV.ItemsSource = users;
+                    return;
+                }
+            }
+            MessageBox.Show("Username doesn't exist.", "Error", MessageBoxButton.OK);
+            return;
         }
+
+        
     }
 }

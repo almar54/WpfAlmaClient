@@ -75,9 +75,7 @@ namespace WpfAlmaClient
                 MessageBox.Show("You have errors, go back anf change them", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             MessageBox.Show("All good! lets go!", "Thank You", MessageBoxButton.OK);
-            Userwnd userwnd = new Userwnd(user);
             this.Close();
-            userwnd.ShowDialog();
         }
     }
 }

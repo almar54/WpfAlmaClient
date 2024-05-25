@@ -144,6 +144,11 @@
                                        Margin="10" />
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Height="45"
+                                  Padding="0"
+                                  x:Name="lvMenu">
+                        <StackPanel x:Name="spMenu" ></StackPanel>
+                    </ListViewItem>
                 </ListView>
             </StackPanel>
             <Button x:Name="ButtonClose"

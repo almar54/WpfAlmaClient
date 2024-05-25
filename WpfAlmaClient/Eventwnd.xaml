@@ -4,12 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAlmaClient"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Eventwnd"
         d:DesignHeight="600"
         d:DesignWidth="800"
         Background="#e1f5fe">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <materialDesign:PackIcon Kind="Home"
+                                 Height="30"
+                                 Width="30"
+                                 Margin="5"
+                                 x:Name="homeDr"
+                                 VerticalAlignment="Top"
+                                 MouseLeftButtonUp="homeDr_MouseLeftButtonUp"
+                                 Grid.Column="0" />
+        <StackPanel Grid.Column="1" x:Name="spEvents">
+            <TextBox x:Name="EventDel"
+                     materialDesign:HintAssist.Hint="Enter Event to delete"
+                     Margin="0 20 0 0"
+                     Width="250"
+                     HorizontalAlignment="Left" />
+            <Button x:Name="deleteEvent"
+                    Content="Delete"
+                    Click="deleteEvent_Click"
+                    FontFamily="Aharoni"
+                    FontSize="20"
+                    HorizontalAlignment="Left"
+                    Foreground="Gray"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Margin="10 10" />
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    x:Name="eventbtn"
+                    Click="eventbtn_Click"
+                    ToolTip="MaterialDesignFlatButton"
+                    FontWeight="Bold"
+                    FontFamily="Ariel"
+                    HorizontalAlignment="Left"
+                    FontSize="15">Create new Event</Button>
+        </StackPanel>
     </Grid>
 </Window>

@@ -30,7 +30,7 @@ namespace WpfAlmaClient
         {
             UnityClient x = new UnityClient();
             User user = x.Login(new User { UserName = "alma22", Password = "Alma22#", PhoneNum = "0584942153" });
-            UsersWnd usersWnd = new UsersWnd(user);
+            ManagerWnd usersWnd = new ManagerWnd(user);
             this.Close();
             usersWnd.ShowDialog();
         }

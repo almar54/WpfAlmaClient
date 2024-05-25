@@ -40,8 +40,9 @@ namespace WpfAlmaClient
             AddexCategory();
             AddexEvent();
             LoadPostCard(posts);
-
         }
+
+
         private void AddexEvent()
         {
             Expander expander = new Expander();
@@ -150,8 +151,14 @@ namespace WpfAlmaClient
         private void userIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Userwnd userwnd = new Userwnd(user);
+            ManagerWnd managerWnd = new ManagerWnd(user);
             this.Close();
+            if (user.IsManager)
+            {
+                managerWnd.ShowDialog();
+            }
             userwnd.ShowDialog();
+            
         }        
     }
 }
