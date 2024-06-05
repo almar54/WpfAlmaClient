@@ -61,6 +61,7 @@ namespace WpfAlmaClient
             user.Password = pbPassword.Password;
             user.City = cbxCities.SelectedItem as City;
             user.IsManager = false;
+            user.PhoneNum = tbPhone.Text;
             if (myService.InsertUser(user) != 1)
             {
                 tbDialogText.Text = "Something Is Wrong";
@@ -69,6 +70,7 @@ namespace WpfAlmaClient
             }
             tbDialogText.Text = "Thank you!";
             dhErrors.IsOpen = true;
+            user=myService.Login(user);
             Homewnd homewnd = new Homewnd(user);
             this.Close();
             homewnd.ShowDialog();

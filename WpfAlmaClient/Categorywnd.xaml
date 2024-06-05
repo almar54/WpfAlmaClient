@@ -55,7 +55,9 @@
                        Margin="5 5 5 0"
                        FontFamily="Ariel"
                        FontWeight="SemiBold" />
-            <StackPanel x:Name="spCtg"></StackPanel>
+            <ScrollViewer Height="400">
+                <StackPanel x:Name="spCtg"></StackPanel>
+            </ScrollViewer>
             <Button Content="Add Category"
                     FontFamily="Aharoni"
                     FontSize="15"

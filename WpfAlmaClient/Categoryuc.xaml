@@ -22,7 +22,6 @@
                    FontSize="15"
                    FontWeight="Bold"
                    x:Name="ctgName" />
-        <WrapPanel Grid.Row="1"
-                   x:Name="wpPosts"></WrapPanel>
+            <WrapPanel x:Name="wpPosts" Grid.Row="1" />
     </Grid>
 </UserControl>

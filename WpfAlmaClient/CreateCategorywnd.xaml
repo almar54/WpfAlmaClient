@@ -7,6 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="CreateCategorywnd"
+        WindowStartupLocation="CenterScreen"
         Height="400"
         Width="400">
     <Window.Resources>

@@ -16,13 +16,15 @@ namespace WpfAlmaClient
         public static string ImageDirectory { get => imageDirectory; set => imageDirectory = value; }
         public static string[] GetAllPostImages(Post post)
         {
-            List<string> localImage = new List<string>();
             string[] serviceImages = null;
+            UnityClient service = new UnityClient();
+            serviceImages = service.GetImagesByPost(post.ID.ToString());
+
+            List<string> localImage = new List<string>();
             string localFolder = System.IO.Path.Combine(imageDirectory, post.ID.ToString());
             if (Directory.Exists(localFolder))
                 localImage = Directory.GetFiles(localFolder).ToList();
-            UnityClient service = new UnityClient();
-            serviceImages = service.GetImagesByPost(post.ID.ToString());
+           
             if (serviceImages == null) return null;
             foreach (string file in serviceImages)
             {
@@ -39,6 +41,7 @@ namespace WpfAlmaClient
         {
             UnityClient service = new UnityClient();
             byte[] imageArray = service.GetIamge(file, post.ID.ToString());
+
             MemoryStream stream = new MemoryStream(imageArray);
             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
 
@@ -69,6 +72,7 @@ namespace WpfAlmaClient
         }
         public static string SaveImageToClient(string sourcefileName,string folderName)
         {
+            //getting new location to save image
             Directory.CreateDirectory(System.IO.Path.Combine(imageDirectory, folderName));
             string fileName = System.IO.Path.GetFileName(sourcefileName);
             string localFilePath = System.IO.Path.Combine(imageDirectory, folderName, fileName);

@@ -95,7 +95,6 @@ namespace WpfAlmaClient
                 {
                     string name = ImageManager.SaveImageToClient(file, folderName);
                     ImageManager.SendImageToService(folderName+"\\"+name);
-
                 }
             }
             catch (Exception ex)
@@ -103,15 +102,13 @@ namespace WpfAlmaClient
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             MessageBox.Show("All good! lets go!", "Thank You!", MessageBoxButton.OK);
-            Userwnd userwnd = new Userwnd(user);
             this.Close();
-            userwnd.ShowDialog();
         }
 
         private void AddPhotoButton_Click(object sender, RoutedEventArgs e)
         {
             string[] images = ImageManager.Image_Dialog();
-
+            if (images==null || images.Length == 0) { return; } 
             if (images.Length>0)
             {
                 try
@@ -136,9 +133,7 @@ namespace WpfAlmaClient
                         imageControl.Margin = new Thickness(5);
                         imagesContainer.Children.Add(imageControl);
                         files.Add(selectedFileName);
-                    }
-                    
-
+                    }                   
                 }
                 catch (Exception ex)
                 {

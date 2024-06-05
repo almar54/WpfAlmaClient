@@ -7,6 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         d:DesignHeight="600"
+        WindowStartupLocation="CenterScreen"
         d:DesignWidth="800"
         Background="#e1f5fe">
     <Window.Resources>
@@ -80,7 +81,7 @@
             </Grid.RenderTransform>
             <StackPanel>
                 <Image Height="140"
-                       Source="C:\Users\User\source\repos\WpfAlmaClient\WpfAlmaClient\Images\roundLogo.jpg"
+                       Source="\Images\roundLogo.jpg"
                        Stretch="Fill" />
                 <ListView Foreground="#FF313131"
                           FontFamily="Champagne &amp; Limousines"
@@ -170,15 +171,6 @@
                 <RowDefinition Height="50" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <!--<ScrollViewer Padding="15"
-                          x:Name="myScrollViewer"
-                          VerticalScrollBarVisibility="Auto"
-                          Foreground="Black">
-                <WrapPanel x:Name="panel"
-                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                           HorizontalAlignment="Center" />
-                
-            </ScrollViewer>-->
             <DockPanel Height="50"
                        VerticalAlignment="Top">
                 <TextBlock Grid.Row="0"

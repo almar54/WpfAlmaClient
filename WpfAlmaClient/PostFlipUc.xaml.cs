@@ -47,9 +47,9 @@ namespace WpfAlmaClient
             if (images == null)
             {
                 imgtb.Text = "No images";
-                return; 
+                return;
             }
-            foreach(string file in images)
+            foreach (string file in images)
             {
                 try
                 {
@@ -58,11 +58,30 @@ namespace WpfAlmaClient
                     image.Margin = new Thickness(4);
                     image.Width = 30;
                     image.Height = 30;
+                    image.MouseLeftButtonDown += Image_MouseLeftButtonDown;
                     imageGrid.Children.Add(image);
                 }
                 catch (Exception ex)
                 {
                     Trace.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Image image = sender as Image;
+            if (image != null)
+            {
+                if (image.Width == 30)
+                {
+                    image.Width = 120;
+                    image.Height = 120;
+                }
+                else
+                {
+                    image.Width = 30;
+                    image.Height = 30;
                 }
             }
         }

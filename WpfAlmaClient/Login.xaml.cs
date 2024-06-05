@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAlmaClient.CrisisUnityService;
 
@@ -27,7 +20,8 @@ namespace WpfAlmaClient
         public Loginwnd()
         {
             InitializeComponent();
-            ImageManager.ImageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Posts");
+            string path=Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.LastIndexOf(@"\bin"));
+            ImageManager.ImageDirectory = path+@"\Images\Posts\";
             userNameOk = passOk = false;
             this.myService = new UnityClient();
         }

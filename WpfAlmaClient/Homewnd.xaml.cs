@@ -156,9 +156,7 @@ namespace WpfAlmaClient
             if (user.IsManager)
             {
                 managerWnd.ShowDialog();
-            }
-            userwnd.ShowDialog();
-            
+            }            
         }        
     }
 }
